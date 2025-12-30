@@ -1,4 +1,3 @@
-
 import 'package:delivery_app/core/utils/AppTextStyles.dart';
 import 'package:delivery_app/core/utils/App_Colors.dart';
 import 'package:flutter/material.dart';
@@ -15,14 +14,18 @@ class Customhomeappbar extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         SvgPicture.asset("assets/images/layrsicon.svg"),
-          Row(
-            children: [
-              Icon(Icons.location_on_sharp,color:App_Colors.kprimaryColor,),
-              Text("kafrshoukr,meeteldoreg",style: AppTextStyles.heading13semiBold,)
-            ],
-          ),
+        Row(
+          children: [
+            Icon(Icons.location_on_sharp, color: App_Colors.kprimaryColor),
+            Text(
+              "kafrshoukr,meeteldoreg",
+              style: AppTextStyles.heading13semiBold,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ],
+        ),
 
-      Image.asset("assets/images/homeicon1.png")
+        Image.asset("assets/images/homeicon1.png"),
       ],
     );
   }

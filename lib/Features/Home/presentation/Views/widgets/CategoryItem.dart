@@ -1,7 +1,9 @@
 
-import 'package:delivery_app/Features/MainView/Domain/entities/CategoryModel.dart';
 import 'package:delivery_app/core/utils/AppTextStyles.dart';
+import 'package:delivery_app/core/utils/App_Colors.dart';
 import 'package:flutter/material.dart';
+
+import '../../../data/models/CategoryModel.dart';
 
 class Categoryitem extends StatelessWidget {
   const Categoryitem({Key? key, required this.categoryModel}) : super(key: key);
@@ -14,7 +16,7 @@ final CategoryModel categoryModel;
         color: Colors.white,
         shape: RoundedRectangleBorder(
           side: BorderSide(
-            width: 0.70,
+            width: 0.7,
             color: const Color(0xFFFF0000),
           ),
           borderRadius: BorderRadius.circular(7),
@@ -34,7 +36,7 @@ final CategoryModel categoryModel;
       )
       ,
           Text(
-            categoryModel.text,
+            categoryModel.categoryName,
             style: AppTextStyles.heading16semiBold
           ),
         ],

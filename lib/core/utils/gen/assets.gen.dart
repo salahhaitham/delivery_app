@@ -14,11 +14,15 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  /// File path: assets/images/AppbarIcon.svg
-  String get appbarIcon => 'assets/images/AppbarIcon.svg';
+  /// File path: assets/images/PierBurger.jpg
+  AssetGenImage get pierBurger =>
+      const AssetGenImage('assets/images/PierBurger.jpg');
 
   /// File path: assets/images/burger1.png
   AssetGenImage get burger1 => const AssetGenImage('assets/images/burger1.png');
+
+  /// File path: assets/images/burger2.png
+  AssetGenImage get burger2 => const AssetGenImage('assets/images/burger2.png');
 
   /// File path: assets/images/homeicon1.png
   AssetGenImage get homeicon1 =>
@@ -33,6 +37,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/onboarding_2.svg
   String get onboarding2 => 'assets/images/onboarding_2.svg';
 
+  /// File path: assets/images/pierburger.avif
+  String get pierburger => 'assets/images/pierburger.avif';
+
   /// File path: assets/images/pizza1.png
   AssetGenImage get pizza1 => const AssetGenImage('assets/images/pizza1.png');
 
@@ -43,17 +50,24 @@ class $AssetsImagesGen {
   AssetGenImage get sandwich1 =>
       const AssetGenImage('assets/images/sandwich1.png');
 
+  /// File path: assets/images/watermelon_test.png
+  AssetGenImage get watermelonTest =>
+      const AssetGenImage('assets/images/watermelon_test.png');
+
   /// List of all assets
   List<dynamic> get values => [
-    appbarIcon,
+    pierBurger,
     burger1,
+    burger2,
     homeicon1,
     layrsicon,
     onboarding1,
     onboarding2,
+    pierburger,
     pizza1,
     profile,
     sandwich1,
+    watermelonTest,
   ];
 }
 

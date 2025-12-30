@@ -1,8 +1,10 @@
-import 'package:delivery_app/Features/MainView/Domain/entities/CategoryModel.dart';
-import 'package:delivery_app/Features/MainView/presentation/Views/widgets/CategoryItem.dart';
-import 'package:delivery_app/Features/MainView/presentation/Views/widgets/categoryView.dart';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../../../data/models/CategoryModel.dart';
+import 'CategoryItem.dart';
+import 'categoryView.dart';
 
 class Categorieslistview extends StatelessWidget {
   const Categorieslistview({Key? key}) : super(key: key);
@@ -10,9 +12,9 @@ class Categorieslistview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<CategoryModel> categories = [
-      CategoryModel(id: 1, text: 'Burger', image: "assets/images/burger1.png"),
-      CategoryModel(id: 2, text: 'Pizza', image: "assets/images/pizza1.png"),
-      CategoryModel(id: 3, text: 'Sandwich', image: "assets/images/sandwich1.png"),
+      CategoryModel(id: 1, categoryName: 'Burger', image: "assets/images/burger1.png"),
+      CategoryModel(id: 2, categoryName: 'Pizza', image: "assets/images/pizza1.png"),
+      CategoryModel(id: 3, categoryName: 'Sandwich', image: "assets/images/sandwich1.png"),
     ];
 
     return ListView.builder(
@@ -22,7 +24,8 @@ class Categorieslistview extends StatelessWidget {
         padding: const EdgeInsets.only(right: 6),
         child: GestureDetector(
             onTap: () {
-              Navigator.pushNamed(context, Categoryview.routename,arguments: categories[index].id);
+
+              Navigator.pushNamed(context, CategoryView.routename,arguments: categories[index].categoryName);
             },
             child: Categoryitem(categoryModel: categories[index])),
       ),

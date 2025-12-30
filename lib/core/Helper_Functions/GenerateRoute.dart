@@ -1,10 +1,12 @@
 import 'package:delivery_app/Features/Auth/presentation/Views/AuthPageView.dart';
-import 'package:delivery_app/Features/MainView/presentation/Views/MainView.dart';
-import 'package:delivery_app/Features/MainView/presentation/Views/widgets/categoryView.dart';
+
 import 'package:delivery_app/Features/Splash/SplashView.dart';
 import 'package:delivery_app/Features/onBoarding/onBoardingView.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../../Features/Home/presentation/Views/MainView.dart';
+import '../../Features/Home/presentation/Views/widgets/categoryView.dart';
 
 Route<dynamic> onGenerateRoute(RouteSettings settings){
   switch(settings.name){
@@ -16,8 +18,8 @@ Route<dynamic> onGenerateRoute(RouteSettings settings){
       return MaterialPageRoute(builder: (context) => Authpageview(),);
     case Mainview.routename:
       return MaterialPageRoute(builder: (context) => Mainview(),);
-    case Categoryview.routename:
-      return MaterialPageRoute(builder: (context) => Categoryview(),);
+    case CategoryView.routename:
+      return MaterialPageRoute(builder: (context) => CategoryView(categoryName: settings.arguments as String,),);
 
     default:
       return MaterialPageRoute(builder: (context) => Scaffold());

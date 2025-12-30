@@ -3,12 +3,13 @@ import 'package:delivery_app/Features/Auth/data/repos/AuthRepoImpl.dart';
 import 'package:delivery_app/Features/Auth/domain/repos/authRepo/AuthRepo.dart';
 import 'package:delivery_app/Features/Auth/manager/Auth-Cubits/SignInCubit/AuthCubit.dart';
 import 'package:delivery_app/Features/Auth/presentation/Views/widgets/AuthPageViewBody.dart';
-import 'package:delivery_app/Features/MainView/presentation/Views/MainView.dart';
 import 'package:delivery_app/core/Services/Getit_Service.dart';
 import 'package:delivery_app/core/widgets/ShowSnackBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+
+import '../../../Home/presentation/Views/MainView.dart';
 
 class Authpageview extends StatelessWidget {
   const Authpageview({Key? key}) : super(key: key);

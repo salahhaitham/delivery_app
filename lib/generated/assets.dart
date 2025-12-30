@@ -6,15 +6,19 @@ class Assets {
   static const String fontsPoppinsMedium = 'assets/fonts/Poppins-Medium.ttf';
   static const String fontsPoppinsRegular = 'assets/fonts/Poppins-Regular.ttf';
   static const String fontsPoppinsSemiBold = 'assets/fonts/Poppins-SemiBold.ttf';
-  static const String imagesAppbarIcon = 'assets/images/AppbarIcon.svg';
   static const String imagesBurger1 = 'assets/images/burger1.png';
   static const String imagesBurger2 = 'assets/images/burger2.png';
   static const String imagesHomeicon1 = 'assets/images/homeicon1.png';
+  static const String imagesLatinoSandwiches = 'assets/images/LatinoSandwiches.jpg';
   static const String imagesLayrsicon = 'assets/images/layrsicon.svg';
   static const String imagesOnboarding1 = 'assets/images/onboarding_1.svg';
   static const String imagesOnboarding2 = 'assets/images/onboarding_2.svg';
+  static const String imagesPierBurger = 'assets/images/PierBurger.jpg';
+  static const String imagesPierburger = 'assets/images/pierburger.avif';
   static const String imagesPizza1 = 'assets/images/pizza1.png';
+  static const String imagesPizzaFarinata = 'assets/images/pizzaFarinata.jpg';
   static const String imagesProfile = 'assets/images/profile.png';
   static const String imagesSandwich1 = 'assets/images/sandwich1.png';
+  static const String imagesWatermelonTest = 'assets/images/watermelon_test.png';
 
 }

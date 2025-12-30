@@ -1,12 +1,13 @@
 
 import 'package:delivery_app/Features/Auth/presentation/Views/AuthPageView.dart';
-import 'package:delivery_app/Features/MainView/presentation/Views/MainView.dart';
 import 'package:delivery_app/Features/onBoarding/onBoardingView.dart';
 import 'package:delivery_app/core/Services/FireStoreServices.dart';
 import 'package:delivery_app/core/Services/FirebaseAuthService.dart';
 import 'package:delivery_app/core/Services/ShearedPreferenceSinglton.dart';
 import 'package:delivery_app/core/utils/constants.dart';
 import 'package:flutter/material.dart';
+
+import '../../Home/presentation/Views/MainView.dart';
 
 class Splashviewbody extends StatefulWidget {
   const Splashviewbody({Key? key}) : super(key: key);

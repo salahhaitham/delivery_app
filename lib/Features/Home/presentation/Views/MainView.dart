@@ -1,6 +1,8 @@
-import 'package:delivery_app/Features/MainView/presentation/Views/HomeView.dart';
-import 'package:delivery_app/Features/MainView/presentation/Views/widgets/CustomBottomNavBar.dart';
+
+import 'package:delivery_app/Features/Home/presentation/Views/widgets/CustomBottomNavBar.dart';
 import 'package:flutter/material.dart';
+
+import 'HomeView.dart';
 
 class Mainview extends StatefulWidget {
   const Mainview({Key? key}) : super(key: key);
