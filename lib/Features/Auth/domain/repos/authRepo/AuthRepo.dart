@@ -1,0 +1,10 @@
+import 'package:dartz/dartz.dart';
+import 'package:delivery_app/Features/Auth/domain/entities/userEntity.dart';
+import 'package:delivery_app/core/errors/Failure.dart';
+
+abstract class AuthRepo {
+  Future<Either<Failure,UserEntity>>CreateUserWithEmailAndPassword(String email,String password,String username);
+  Future<Either<Failure,UserEntity>>SignInUserWithEmailAndPassword(String email,String password,String username);
+
+
+}
