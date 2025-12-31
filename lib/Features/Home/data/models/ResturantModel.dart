@@ -10,6 +10,7 @@ class RestaurantModel {
   final String openTime;
   final String closeTime;
 
+
   const RestaurantModel({
     required this.id,
     required this.name,
@@ -19,5 +20,6 @@ class RestaurantModel {
     required this.image,
     required this.openTime,
     required this.closeTime,
+   
   });
 }

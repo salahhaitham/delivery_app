@@ -19,6 +19,8 @@ class CustomTextFormField extends StatelessWidget {
       },
       keyboardType: keyboardType,
       onSaved:onSaved ,
+      onTapOutside: (event) =>  FocusScope.of(context).unfocus()
+      ,
       obscureText: ispassword,
       decoration: InputDecoration(
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),

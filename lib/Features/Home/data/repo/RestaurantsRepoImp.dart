@@ -6,9 +6,14 @@ import 'package:delivery_app/core/errors/Failure.dart';
 
 class getRestaurantsRepoImp extends RestaurantsRepo{
   @override
-  Either<Failure, List<RestaurantModel>> getResturants() {
-    // TODO: implement getResturants
-    throw UnimplementedError();
+  Future<Either<Failure, List<RestaurantModel>>> getResturants() async{
+    try {
+      var resturants=await Mock_resturants().Restaurants;
+      return right(resturants);
+    } on Exception catch (e) {
+      return left(Failure(e.toString()));
+    }
+
   }
 
 

@@ -10,6 +10,7 @@ class Mock_resturants {
       image: "assets/images/PierBurger.jpg",
       openTime: '10:00',
       closeTime: '23:00',
+
     ),
     RestaurantModel(
       id: '2',
