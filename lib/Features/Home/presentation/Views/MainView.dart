@@ -1,4 +1,5 @@
 
+import 'package:delivery_app/Features/Home/presentation/Views/widgets/CartView.dart';
 import 'package:delivery_app/Features/Home/presentation/Views/widgets/CustomBottomNavBar.dart';
 import 'package:flutter/material.dart';
 
@@ -16,6 +17,7 @@ class _MainviewState extends State<Mainview> {
   int currentIndex = 0;
   List<Widget>screens=[
     Homeview(),
+    Cartview()
   ];
   @override
   Widget build(BuildContext context) {

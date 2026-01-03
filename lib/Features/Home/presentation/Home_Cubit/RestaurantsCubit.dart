@@ -20,7 +20,7 @@ RestaurantsRepo restaurantsRepo;
     result.fold((failure){
       emit(LoadRestaurantsFailure(failure.errMessage));
     }, (restaurantsLoaded){
-      final NearbyRestaurants = restaurantsLoaded.map((r) {
+      final nearbyRestaurants = restaurantsLoaded.map((r) {
         final distance = DistanceCalculator.calculateKm(
           userLat: UserLocation().lat,
           userLng: UserLocation().lng,
@@ -42,7 +42,10 @@ RestaurantsRepo restaurantsRepo;
           deliveryMinutes: deliveryTime,
         );
       }).toList();
-      emit(LoadRestaurantsSuccess(NearbyRestaurants));
+nearbyRestaurants.sort(
+            (a, b) => a.distanceKm.compareTo(b.distanceKm),
+      );
+      emit(LoadRestaurantsSuccess(nearbyRestaurants));
     });
 
   }

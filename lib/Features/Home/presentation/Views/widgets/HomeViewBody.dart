@@ -1,4 +1,5 @@
 
+import 'package:delivery_app/Features/Home/data/models/NearbyRestaurantModel.dart';
 import 'package:flutter/material.dart';
 
 import '../../../data/Mock/Mock_Resturants.dart';
@@ -10,8 +11,8 @@ import 'Home_Header.dart';
 import 'ResturantItem.dart';
 
 class Homeviewbody extends StatelessWidget {
-  const Homeviewbody({Key? key}) : super(key: key);
-
+  const Homeviewbody({Key? key,required this.restaurantsList}) : super(key: key);
+final List<Nearbyrestaurantmodel>restaurantsList;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -27,9 +28,12 @@ class Homeviewbody extends StatelessWidget {
           SizedBox(height:  MediaQuery.of(context).size.height * 0.06,
               child: Categorieslistview()),
           HomeHeader(title: "Nearby Resturants"),
-          ReestaurantItem(restaurant: Mock_resturants().Restaurants[0]),
-          ReestaurantItem(restaurant: Mock_resturants().Restaurants[1]),
-          ReestaurantItem(restaurant: Mock_resturants().Restaurants[2]),
+          Expanded(
+            child: ListView.builder(
+              itemCount: restaurantsList.length,
+              itemBuilder: (context, index) =>restaurantsList[index].restaurant.image!=null ? ReestaurantItem(nearbyrestaurant: restaurantsList[index]):SizedBox(),),
+          )
+
 
 
         ],
