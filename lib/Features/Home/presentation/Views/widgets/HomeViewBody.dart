@@ -1,4 +1,3 @@
-
 import 'package:delivery_app/Features/Home/data/models/NearbyRestaurantModel.dart';
 import 'package:flutter/material.dart';
 
@@ -11,34 +10,44 @@ import 'Home_Header.dart';
 import 'ResturantItem.dart';
 
 class Homeviewbody extends StatelessWidget {
-  const Homeviewbody({Key? key,required this.restaurantsList}) : super(key: key);
-final List<Nearbyrestaurantmodel>restaurantsList;
+  const Homeviewbody({Key? key, required this.restaurantsList})
+    : super(key: key);
+  final List<Nearbyrestaurantmodel> restaurantsList;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Column(
+      child: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Customhomeappbar(),
+                const SizedBox(height: 16),
+                CustomSearchtextfield(),
+                const SizedBox(height: 24),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.06,
+                  child: Categorieslistview(),
+                ),
+                const SizedBox(height: 16),
+                HomeHeader(title: "Nearby Restaurants"),
+              ],
+            ),
+          ),
 
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-         Customhomeappbar(),
-          SizedBox(height: 16,),
-          CustomSearchtextfield(),
-          SizedBox(height: 24,),
-          SizedBox(height:  MediaQuery.of(context).size.height * 0.06,
-              child: Categorieslistview()),
-          HomeHeader(title: "Nearby Resturants"),
-          Expanded(
-            child: ListView.builder(
-              itemCount: restaurantsList.length,
-              itemBuilder: (context, index) =>restaurantsList[index].restaurant.image!=null ? ReestaurantItem(nearbyrestaurant: restaurantsList[index]):SizedBox(),),
-          )
 
-
-
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+                  (context, index) => ReestaurantItem(
+                nearbyrestaurant: restaurantsList[index],
+              ),
+              childCount: restaurantsList.length,
+            ),
+          ),
         ],
       ),
     );
   }
 }
-

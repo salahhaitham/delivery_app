@@ -2,10 +2,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
-import '../../../domain/entities/userEntity.dart';
-import '../../../domain/repos/authRepo/AuthRepo.dart';
+import '../../domain/entities/userEntity.dart';
+import '../../domain/repos/authRepo/AuthRepo.dart';
 
-part 'sign_in_state.dart';
+part 'Auth_state.dart';
 
 class Authcubit extends Cubit<AuthState> {
   Authcubit(this.authRepo) : super(SignInInitial());

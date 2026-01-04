@@ -24,7 +24,8 @@ class _SplashviewbodyState extends State<Splashviewbody> {
      var IsOnBoardingSeen=  SharedPrefernceSinglton.getBool(KisOnBoardingSeen);
        if(isLoggedIn){
          Navigator.pushNamed(context, Mainview.routename);
-       }else if (IsOnBoardingSeen){
+       }else
+         if (IsOnBoardingSeen){
          Navigator.pushNamed(context, Authpageview.routename);
 
        }else

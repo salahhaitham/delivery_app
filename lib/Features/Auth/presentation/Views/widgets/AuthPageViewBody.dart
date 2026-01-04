@@ -1,4 +1,3 @@
-import 'package:delivery_app/Features/Auth/manager/Auth-Cubits/SignInCubit/AuthCubit.dart';
 import 'package:delivery_app/core/utils/AppTextStyles.dart';
 import 'package:delivery_app/core/utils/App_Colors.dart';
 import 'package:delivery_app/core/widgets/CustomTextFormField.dart';
@@ -6,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:svg_flutter/svg.dart';
 
+import '../../../manager/Auth-Cubit/AuthCubit.dart';
 import 'AuthButton.dart';
 import 'AuthViewBackgroundImg.dart';
 import 'LoginText.dart';
