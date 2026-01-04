@@ -1,13 +1,15 @@
+import 'package:delivery_app/Features/Home/Domain/model/UserLocation1.dart';
 import 'package:delivery_app/core/utils/AppTextStyles.dart';
 import 'package:delivery_app/core/utils/App_Colors.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:svg_flutter/svg.dart';
 
 import '../../../../../core/utils/gen/assets.gen.dart';
 
 class Customhomeappbar extends StatelessWidget {
-  const Customhomeappbar({Key? key}) : super(key: key);
-
+  const Customhomeappbar({Key? key,required this.userLocation}) : super(key: key);
+  final    UserLocation1 userLocation;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -18,8 +20,9 @@ class Customhomeappbar extends StatelessWidget {
           children: [
             Icon(Icons.location_on_sharp, color: App_Colors.kprimaryColor),
             Text(
-              "kafrshoukr,meeteldoreg",
-              style: AppTextStyles.heading13semiBold,
+              "${userLocation.name} "
+
+              ,style: AppTextStyles.heading13semiBold,
               overflow: TextOverflow.ellipsis,
             ),
           ],

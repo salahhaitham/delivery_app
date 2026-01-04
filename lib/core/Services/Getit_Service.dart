@@ -1,4 +1,5 @@
 
+import 'package:delivery_app/Features/Home/Domain/Services/LocationService.dart';
 import 'package:delivery_app/Features/Home/Domain/repo/RestaurantsRepo.dart';
 import 'package:delivery_app/Features/Home/data/repo/RestaurantsRepoImp.dart';
 import 'package:delivery_app/core/Services/DatabaseServices.dart';
@@ -14,6 +15,7 @@ void setupServiceLocator() {
   getIt.registerLazySingleton(() => FirebaseAuthService());
   getIt.registerLazySingleton(() => FireStoreservices());
   getIt.registerLazySingleton(() => RestaurantsRepoImp());
+  getIt.registerLazySingleton(() => LocationService());
 
 
 

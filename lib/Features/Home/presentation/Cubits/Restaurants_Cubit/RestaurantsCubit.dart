@@ -7,6 +7,7 @@ import 'package:meta/meta.dart';
 
 import '../../../Domain/Services/DistanceCalculator.dart';
 import '../../../Domain/extensions/OpenStatusChecker.dart';
+import '../../../Domain/model/UserLocation1.dart';
 
 
 
@@ -16,7 +17,7 @@ class Restaurantscubit extends Cubit<RestaurantsState> {
   Restaurantscubit(this.restaurantsRepo) : super(LoadRestaurantsInitial());
 RestaurantsRepo restaurantsRepo;
 
-  Future<void>LoadRestaurants()async{
+  Future<void>LoadRestaurants(UserLocation1 userlocation)async{
     emit(LoadRestaurantsLoading());
     var result=await restaurantsRepo.getResturants();
     result.fold((failure){
@@ -24,8 +25,8 @@ RestaurantsRepo restaurantsRepo;
     }, (restaurantsLoaded){
       final nearbyRestaurants = restaurantsLoaded.map((r) {
         final distance = DistanceCalculator.calculateKm(
-          userLat: UserLocation().lat,
-          userLng: UserLocation().lng,
+          userLat: userlocation.lat,
+          userLng: userlocation.lng,
           storeLat: r.lat,
           storeLng: r.lng,
         );
@@ -35,7 +36,7 @@ RestaurantsRepo restaurantsRepo;
           closeTime: r.closeTime,
         );
 
-        final deliveryTime = (distance * 5).round();
+        final deliveryTime = (distance * 5).round()+10;
 
        return Nearbyrestaurantmodel(
           restaurant: r,

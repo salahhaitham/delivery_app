@@ -75,13 +75,38 @@ class ReestaurantItem extends StatelessWidget {
                   children: [
                     const Icon(Icons.access_time, size: 16, color: Colors.grey),
                     const SizedBox(width: 4),
-                    Text('${nearbyrestaurant.deliveryMinutes}-${nearbyrestaurant.deliveryMinutes+10} min', style: const TextStyle(fontSize: 12)),
-                    const  Spacer(),
-                    Text('${nearbyrestaurant.distanceKm.toStringAsFixed(1)} km'),
-                    const Spacer(),
+
+                    // ⏱ Time
+                    Flexible(
+                      flex: 2,
+                      child: Text(
+                        '${nearbyrestaurant.deliveryMinutes}-${nearbyrestaurant.deliveryMinutes + 10} min',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(fontSize: 12),
+                      ),
+                    ),
+
+                    const SizedBox(width: 8),
+
+                    // 📍 Distance
+                    Flexible(
+                      flex: 1,
+                      child: Text(
+                        '${nearbyrestaurant.distanceKm.toStringAsFixed(1)} km',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(fontSize: 12),
+                      ),
+                    ),
+
+                    const SizedBox(width: 8),
+
+                    // 🟢 Open badge
                     OpenBadge(isOpen: nearbyrestaurant.isOpen),
                   ],
-                ),
+                )
+
               ],
             ),
           ),

@@ -1,6 +1,7 @@
 
 
 import 'package:bloc/bloc.dart';
+import 'package:delivery_app/Features/Home/Domain/model/UserLocation1.dart';
 
 import '../../../../../core/enums/LocationStatus.dart';
 import '../../../Domain/Services/LocationService.dart';
@@ -16,20 +17,29 @@ class HomeCubit extends Cubit<HomeState> {
 
     final status = await locationService.checkPermission();
 
-    switch (status) {
-      case LocationStatus.granted:
-        final position = await locationService.getLocation();
-        emit(HomeReady(position));
-        break;
+    if (status == LocationStatus.granted) {
+      final position = await locationService.getLocation();
+      final name = await locationService.getLocationName(position);
 
-      case LocationStatus.denied:
-      case LocationStatus.serviceDisabled:
-        emit(HomeLocationRequired());
-        break;
+      emit(HomeReady(
+        UserLocation1(
+          lat: position.latitude,
+          lng: position.longitude,
+          name: name,
+        ),
+      ));
+      return;
+    }
 
-      case LocationStatus.deniedForever:
-        emit(HomeLocationDeniedForever());
-        break;
+    if (status == LocationStatus.denied ||
+        status == LocationStatus.serviceDisabled) {
+      emit(HomeLocationRequired());
+      return;
+    }
+
+    if (status == LocationStatus.deniedForever) {
+      emit(HomeLocationDeniedForever());
     }
   }
+
 }

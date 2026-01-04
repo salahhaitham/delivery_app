@@ -1,52 +1,42 @@
-import 'package:delivery_app/Features/Home/data/models/NearbyRestaurantModel.dart';
+import 'package:delivery_app/Features/Home/Domain/model/UserLocation1.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../data/Mock/Mock_Resturants.dart';
-import '../../../data/models/ResturantModel.dart';
-import 'CategoriesListView.dart';
-import 'CustomHomeAppBar.dart';
-import 'CustomSearchTextField.dart';
-import 'Home_Header.dart';
-import 'ResturantItem.dart';
+import '../../Cubits/Home_Cubit/Home_Cubit.dart';
+import '../../Cubits/Home_Cubit/Home_state.dart';
+import '../../Cubits/Restaurants_Cubit/RestaurantsCubit.dart';
+import 'HomeContentLoader.dart';
+import 'LocationPermissionView.dart';
+import 'LocationSettingsView.dart';
 
-class Homeviewbody extends StatelessWidget {
-  const Homeviewbody({Key? key, required this.restaurantsList})
-    : super(key: key);
-  final List<Nearbyrestaurantmodel> restaurantsList;
+class HomeViewBody extends StatelessWidget {
+  const HomeViewBody({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Customhomeappbar(),
-                const SizedBox(height: 16),
-                CustomSearchtextfield(),
-                const SizedBox(height: 24),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.06,
-                  child: Categorieslistview(),
-                ),
-                const SizedBox(height: 16),
-                HomeHeader(title: "Nearby Restaurants"),
-              ],
-            ),
-          ),
+    return BlocListener<HomeCubit, HomeState>(
+      listenWhen: (previous, current) => current is HomeReady,
+      listener: (context, state) {
+        final userLocation = (state as HomeReady).userLocation;
+        context.read<Restaurantscubit>().LoadRestaurants(userLocation);
+      },
+      child: BlocBuilder<HomeCubit, HomeState>(
+        builder: (context, state) {
+          if (state is HomeLoading) {
+            return const Center(child: CircularProgressIndicator());
+          }
 
+          if (state is HomeLocationRequired ||
+              state is HomeLocationDeniedForever) {
+            return LocationPermissionView();
+          }
 
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-                  (context, index) => ReestaurantItem(
-                nearbyrestaurant: restaurantsList[index],
-              ),
-              childCount: restaurantsList.length,
-            ),
-          ),
-        ],
+          if (state is HomeReady) {
+            return HomeContentLoader(userLocation: state.userLocation);
+          }
+
+          return const SizedBox();
+        },
       ),
     );
   }
