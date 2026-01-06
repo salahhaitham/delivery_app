@@ -9,35 +9,35 @@ import 'HomeContentLoader.dart';
 import 'LocationPermissionView.dart';
 import 'LocationSettingsView.dart';
 
-class HomeViewBody extends StatelessWidget {
-  const HomeViewBody({super.key});
+  class HomeViewBody extends StatelessWidget {
+    const HomeViewBody({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return BlocListener<HomeCubit, HomeState>(
-      listenWhen: (previous, current) => current is HomeReady,
-      listener: (context, state) {
-        final userLocation = (state as HomeReady).userLocation;
-        context.read<Restaurantscubit>().LoadRestaurants(userLocation);
-      },
-      child: BlocBuilder<HomeCubit, HomeState>(
-        builder: (context, state) {
-          if (state is HomeLoading) {
-            return const Center(child: CircularProgressIndicator());
-          }
-
-          if (state is HomeLocationRequired ||
-              state is HomeLocationDeniedForever) {
-            return LocationPermissionView();
-          }
-
-          if (state is HomeReady) {
-            return HomeContentLoader(userLocation: state.userLocation);
-          }
-
-          return const SizedBox();
+    @override
+    Widget build(BuildContext context) {
+      return BlocListener<HomeCubit, HomeState>(
+        listenWhen: (previous, current) => current is HomeReady,
+        listener: (context, state) {
+          final userLocation = (state as HomeReady).userLocation;
+          context.read<Restaurantscubit>().LoadRestaurants(userLocation);
         },
-      ),
-    );
+        child: BlocBuilder<HomeCubit, HomeState>(
+          builder: (context, state) {
+            if (state is HomeLoading) {
+              return const Center(child: CircularProgressIndicator());
+            }
+
+            if (state is HomeLocationRequired
+                ) {
+              return LocationPermissionView(locationStatus: state.locationStatus,);
+            }
+
+            if (state is HomeReady) {
+              return HomeContentLoader(userLocation: state.userLocation);
+            }
+
+            return const SizedBox();
+          },
+        ),
+      );
+    }
   }
-}

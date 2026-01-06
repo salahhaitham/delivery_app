@@ -38,18 +38,21 @@ class _onBoardingViewBodyState extends State<onBoardingViewBody> {
 
          Onboardingpageview(pageController: pageController,),
 
-        GestureDetector(
-            onTap: () => Navigator.pushNamed(context, Authpageview.routename),
-            child: GestureDetector(
+
+
+         GestureDetector(
                 onTap: () {
                   SharedPrefernceSinglton.setBool(KisOnBoardingSeen, true);
+                  Navigator.pushNamed(context, Authpageview.routename);
                 },
-                child: CustomButtom())),
+                child: CustomButtom()),
         SizedBox(height: 14,),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Text("Skip",style: AppTextStyles.heading16semiBold,),
+            GestureDetector(
+                onTap: () => Navigator.pushNamed(context, Authpageview.routename),
+                child: Text("Skip",style: AppTextStyles.heading16semiBold,)),
             DotsIndicator(
               position:currentpage.toDouble(),
               dotsCount: 2,

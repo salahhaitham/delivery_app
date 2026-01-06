@@ -34,7 +34,7 @@ class ReestaurantItem extends StatelessWidget {
       ),
       child: Row(
         children: [
-          // 🖼 Image
+
           ClipRRect(
             borderRadius: BorderRadius.circular(12),
             child: Image.asset(
@@ -47,7 +47,6 @@ class ReestaurantItem extends StatelessWidget {
 
           const SizedBox(width: 12),
 
-          // 📄 Info
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -76,7 +75,7 @@ class ReestaurantItem extends StatelessWidget {
                     const Icon(Icons.access_time, size: 16, color: Colors.grey),
                     const SizedBox(width: 4),
 
-                    // ⏱ Time
+
                     Flexible(
                       flex: 2,
                       child: Text(
@@ -89,7 +88,6 @@ class ReestaurantItem extends StatelessWidget {
 
                     const SizedBox(width: 8),
 
-                    // 📍 Distance
                     Flexible(
                       flex: 1,
                       child: Text(
@@ -102,7 +100,7 @@ class ReestaurantItem extends StatelessWidget {
 
                     const SizedBox(width: 8),
 
-                    // 🟢 Open badge
+
                     OpenBadge(isOpen: nearbyrestaurant.isOpen),
                   ],
                 )

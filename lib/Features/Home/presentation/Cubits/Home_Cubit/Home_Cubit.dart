@@ -1,5 +1,3 @@
-
-
 import 'package:bloc/bloc.dart';
 import 'package:delivery_app/Features/Home/Domain/model/UserLocation1.dart';
 
@@ -21,25 +19,23 @@ class HomeCubit extends Cubit<HomeState> {
       final position = await locationService.getLocation();
       final name = await locationService.getLocationName(position);
 
-      emit(HomeReady(
-        UserLocation1(
-          lat: position.latitude,
-          lng: position.longitude,
-          name: name,
+      emit(
+        HomeReady(
+          UserLocation1(
+            lat: position.latitude,
+            lng: position.longitude,
+            name: name,
+          ),
         ),
-      ));
+      );
       return;
     }
 
     if (status == LocationStatus.denied ||
-        status == LocationStatus.serviceDisabled) {
-      emit(HomeLocationRequired());
+        status == LocationStatus.serviceDisabled ||
+        status == LocationStatus.deniedForever) {
+      emit(HomeLocationRequired(locationStatus: status));
       return;
     }
-
-    if (status == LocationStatus.deniedForever) {
-      emit(HomeLocationDeniedForever());
-    }
   }
-
 }

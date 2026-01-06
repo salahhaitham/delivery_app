@@ -14,11 +14,11 @@ class LocationService {
     }
 
     LocationPermission permission = await Geolocator.checkPermission();
-    print('📍 Permission BEFORE request: $permission');
+
 
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
-      print('📍 Permission AFTER request: $permission');
+
     }
 
     if (permission == LocationPermission.deniedForever) {
@@ -29,24 +29,37 @@ class LocationService {
       return LocationStatus.denied;
     }
 
-    // whileInUse أو always
+
     return LocationStatus.granted;
   }
 
   Future<String> getLocationName(Position position) async {
     try {
-      final placemarks = await placemarkFromCoordinates(
+      List<Placemark> placemarks = await placemarkFromCoordinates(
         position.latitude,
         position.longitude,
       );
 
-      if (placemarks.isEmpty) return 'Unknown location';
+      if (placemarks.isNotEmpty) {
+        final placemark = placemarks.first;
 
-      final place = placemarks.first;
 
-      return [place.locality, place.subLocality].whereType<String>().join(', ');
-    } catch (_) {
-      return 'Unknown location';
+        final city = placemark.locality ?? '';
+        final subLocality = placemark.subLocality ?? '';
+
+        // ندمجهم
+        if (city.isNotEmpty && subLocality.isNotEmpty) {
+          return '$city, $subLocality';
+        } else if (city.isNotEmpty) {
+          return city;
+        } else {
+          return subLocality;
+        }
+      }
+      return 'Unknown Location';
+    } catch (e) {
+      print('Error getting location name: $e');
+      return 'Unknown Location';
     }
   }
 

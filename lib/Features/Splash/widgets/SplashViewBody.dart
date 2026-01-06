@@ -28,9 +28,10 @@ class _SplashviewbodyState extends State<Splashviewbody> {
          if (IsOnBoardingSeen){
          Navigator.pushNamed(context, Authpageview.routename);
 
-       }else
-       Navigator.pushNamed(context, Onboardingview.routename);
-     },);
+       }
+         else
+       Navigator.pushNamed(context, Onboardingview.routename);}
+    ,);
     super.initState();
   }
   @override

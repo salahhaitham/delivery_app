@@ -21,5 +21,11 @@ class   SharedPrefernceSinglton {
     return _Prefs.getString(key);
   }
 
+  static Future<void>  setDouble(String key,double value) async{
+    await _Prefs.setDouble(key,value) ;
+  }
+  static double? getDouble(String key) {
+    return _Prefs.getDouble(key);
+  }
 
 }
