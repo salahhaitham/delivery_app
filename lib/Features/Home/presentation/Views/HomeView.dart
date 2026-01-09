@@ -12,7 +12,7 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import '../Cubits/Home_Cubit/Home_state.dart';
 import '../Cubits/Restaurants_Cubit/RestaurantsCubit.dart';
 import 'widgets/LocationPermissionView.dart';
-import 'widgets/LocationSettingsView.dart';
+
 
 class Homeview extends StatelessWidget {
   const Homeview({Key? key}) : super(key: key);
@@ -20,7 +20,6 @@ class Homeview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: MultiBlocProvider(
         providers: [
           BlocProvider(

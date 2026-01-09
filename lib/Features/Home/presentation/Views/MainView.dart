@@ -4,6 +4,7 @@ import 'package:delivery_app/Features/Home/presentation/Views/widgets/CustomBott
 import 'package:flutter/material.dart';
 
 import 'HomeView.dart';
+import 'widgets/MainViewBody.dart';
 
 class Mainview extends StatefulWidget {
   const Mainview({Key? key}) : super(key: key);
@@ -34,13 +35,3 @@ class _MainviewState extends State<Mainview> {
     );
   }
 }
-class MainViewBody extends StatelessWidget {
-  const MainViewBody({Key? key,required this.currentViewIndex,required this.screens}) : super(key: key);
-final int currentViewIndex;
-  final List<Widget> screens;
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(child: IndexedStack(children:screens,index: currentViewIndex,));
-  }
-}
-

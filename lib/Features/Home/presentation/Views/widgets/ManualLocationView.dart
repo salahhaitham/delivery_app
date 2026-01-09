@@ -1,4 +1,5 @@
 import 'package:delivery_app/Features/Home/Domain/Services/LocationService.dart';
+import 'package:delivery_app/core/Helper_Functions/Location_Storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:geolocator_platform_interface/src/models/position.dart';
@@ -15,13 +16,10 @@ class ManualLocationView extends StatefulWidget {
 class _ManualLocationViewState extends State<ManualLocationView> {
   LatLng _selectedLocation = LatLng(30.0444, 31.2357);
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Choose Location'),
-      ),
+      appBar: AppBar(title: const Text('Choose Location')),
       body: Stack(
         children: [
           FlutterMap(
@@ -36,7 +34,8 @@ class _ManualLocationViewState extends State<ManualLocationView> {
             ),
             children: [
               TileLayer(
-                urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                urlTemplate:
+                    "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
                 subdomains: ['a', 'b', 'c'],
               ),
               MarkerLayer(
@@ -52,8 +51,7 @@ class _ManualLocationViewState extends State<ManualLocationView> {
                     ),
                   ),
                 ],
-              )
-
+              ),
             ],
           ),
 
@@ -63,36 +61,27 @@ class _ManualLocationViewState extends State<ManualLocationView> {
             left: 20,
             right: 20,
             child: ElevatedButton(
-              onPressed: () async{
+              onPressed: () async {
+                final locationName = await LocationService()
+                    .getLocationNameFromLatLng(
+                      lat: _selectedLocation.latitude,
+                      lng: _selectedLocation.longitude,
+                    );
+
                 final userLocation = UserLocation1(
                   lat: _selectedLocation.latitude,
-                  lng: _selectedLocation.longitude, name: 'null',
-                );
-                final tempPosition = Position(
-                  latitude: userLocation.lat,
-                  longitude: userLocation.lng,
-                  timestamp: DateTime.now(),
-                  accuracy: 0,
-                  altitude: 0,
-                  heading: 0,
-                  speed: 0,
-                  speedAccuracy: 0, altitudeAccuracy: 0.0,
-                  headingAccuracy: 0.0,
-
-                );
-                final locationName = await LocationService().getLocationName(
-                    tempPosition
-                );
-                final finalUserLocation = UserLocation1(
-                  lat: userLocation.lat,
-                  lng: userLocation.lng,
+                  lng: _selectedLocation.longitude,
                   name: locationName,
                 );
-                Navigator.pop(context, finalUserLocation);
+
+                await LocationStorage.saveLocation(userLocation);
+
+                Navigator.pop(context, userLocation);
               },
+
               child: const Text('Confirm Location'),
             ),
-          )
+          ),
         ],
       ),
     );

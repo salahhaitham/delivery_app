@@ -27,11 +27,13 @@ class _LocationPermissionViewState extends State<LocationPermissionView>
     super.initState();
     WidgetsBinding.instance.addObserver(this);
   }
+
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
+
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.resumed && !_isChecking) {
@@ -41,6 +43,7 @@ class _LocationPermissionViewState extends State<LocationPermissionView>
       });
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -70,28 +73,24 @@ class _LocationPermissionViewState extends State<LocationPermissionView>
           SizedBox(
             width: double.infinity,
             child: OutlinedButton(
-                onPressed: () async {
-                  final selectedLocation = await Navigator.push<UserLocation1>(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => const ManualLocationView(),
-                    ),
-                  );
+              onPressed: () async {
+                final selectedLocation = await Navigator.push<UserLocation1>(
+                  context,
+                  MaterialPageRoute(builder: (_) => const ManualLocationView()),
+                );
 
-                  if (selectedLocation != null) {
-                    // ممكن تعمّل Cubit emit هنا
-                    context.read<HomeCubit>().emit(HomeReady(selectedLocation));
-                    context.read<Restaurantscubit>().LoadRestaurants(selectedLocation);
-                  }
+                if (selectedLocation != null) {
+                  context.read<HomeCubit>().setManualLocation(selectedLocation);
                 }
-
-                ,child: const Text('Choose Location Manually'),
+              },
+              child: const Text('Choose Location Manually'),
             ),
           ),
         ],
       ),
     );
   }
+
   Widget buildActionButton(BuildContext context) {
     switch (widget.locationStatus) {
       case LocationStatus.denied:

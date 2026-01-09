@@ -14,6 +14,10 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/LatinoSandwiches.jpg
+  AssetGenImage get latinoSandwiches =>
+      const AssetGenImage('assets/images/LatinoSandwiches.jpg');
+
   /// File path: assets/images/PierBurger.jpg
   AssetGenImage get pierBurger =>
       const AssetGenImage('assets/images/PierBurger.jpg');
@@ -43,6 +47,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/pizza1.png
   AssetGenImage get pizza1 => const AssetGenImage('assets/images/pizza1.png');
 
+  /// File path: assets/images/pizzaFarinata.jpg
+  AssetGenImage get pizzaFarinata =>
+      const AssetGenImage('assets/images/pizzaFarinata.jpg');
+
   /// File path: assets/images/profile.png
   AssetGenImage get profile => const AssetGenImage('assets/images/profile.png');
 
@@ -50,12 +58,17 @@ class $AssetsImagesGen {
   AssetGenImage get sandwich1 =>
       const AssetGenImage('assets/images/sandwich1.png');
 
+  /// File path: assets/images/splash_screen.png
+  AssetGenImage get splashScreen =>
+      const AssetGenImage('assets/images/splash_screen.png');
+
   /// File path: assets/images/watermelon_test.png
   AssetGenImage get watermelonTest =>
       const AssetGenImage('assets/images/watermelon_test.png');
 
   /// List of all assets
   List<dynamic> get values => [
+    latinoSandwiches,
     pierBurger,
     burger1,
     burger2,
@@ -65,8 +78,10 @@ class $AssetsImagesGen {
     onboarding2,
     pierburger,
     pizza1,
+    pizzaFarinata,
     profile,
     sandwich1,
+    splashScreen,
     watermelonTest,
   ];
 }

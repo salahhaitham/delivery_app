@@ -6,7 +6,6 @@ import 'package:delivery_app/core/Services/FirebaseAuthService.dart';
 import 'package:delivery_app/core/Services/ShearedPreferenceSinglton.dart';
 import 'package:delivery_app/core/utils/constants.dart';
 import 'package:flutter/material.dart';
-
 import '../../Home/presentation/Views/MainView.dart';
 
 class Splashviewbody extends StatefulWidget {
@@ -40,7 +39,7 @@ class _SplashviewbodyState extends State<Splashviewbody> {
 
       child: Column(
         children: [
-          Image.asset("assets/images/app_icon.png",fit: BoxFit.fill,)
+          Image.asset("assets/images/splash_screen.png",fit: BoxFit.fill,)
         ],
       ),
     );

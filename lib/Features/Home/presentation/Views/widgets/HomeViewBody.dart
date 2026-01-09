@@ -7,7 +7,7 @@ import '../../Cubits/Home_Cubit/Home_state.dart';
 import '../../Cubits/Restaurants_Cubit/RestaurantsCubit.dart';
 import 'HomeContentLoader.dart';
 import 'LocationPermissionView.dart';
-import 'LocationSettingsView.dart';
+
 
   class HomeViewBody extends StatelessWidget {
     const HomeViewBody({super.key});

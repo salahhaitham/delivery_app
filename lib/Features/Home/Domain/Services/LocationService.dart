@@ -85,4 +85,23 @@ class LocationService {
       name: name,
     );
   }
+  Future<String> getLocationNameFromLatLng({
+    required double lat,
+    required double lng,
+  }) async {
+    final placemarks = await placemarkFromCoordinates(lat, lng);
+
+    final place = placemarks.first;
+
+    final city = place.locality ?? '';
+    final area = place.subLocality ?? '';
+
+    if (city.isNotEmpty && area.isNotEmpty) {
+      return '$city, $area';
+    } else if (city.isNotEmpty) {
+      return city;
+    }
+    return area;
+  }
+
 }
