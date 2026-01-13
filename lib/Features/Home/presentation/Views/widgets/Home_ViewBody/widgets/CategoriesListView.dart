@@ -2,7 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../../data/models/CategoryModel.dart';
+import '../../../../../data/models/CategoryModel.dart';
+
 import 'CategoryItem.dart';
 import 'categoryView.dart';
 

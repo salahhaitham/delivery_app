@@ -5,10 +5,8 @@ import 'package:delivery_app/Features/Home/data/models/UserLocation.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../../../Domain/Services/DeliveryTimeEstimator.dart';
-import '../../../Domain/Services/DistanceCalculator.dart';
-import '../../../data/models/ResturantModel.dart';
-import 'OpenPadge.dart';
+import '../../OpenPadge.dart';
+
 
 class ReestaurantItem extends StatelessWidget {
   const ReestaurantItem({super.key, required this.nearbyrestaurant});

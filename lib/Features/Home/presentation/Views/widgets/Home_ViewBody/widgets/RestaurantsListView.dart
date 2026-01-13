@@ -1,6 +1,7 @@
+import 'package:delivery_app/Features/Home/presentation/Views/RestaurantDetails_View.dart';
 import 'package:flutter/material.dart';
 
-import '../../../data/models/NearbyRestaurantModel.dart';
+import '../../../../../data/models/NearbyRestaurantModel.dart';
 import 'ResturantItem.dart';
 
 class RestaurantsListView extends StatelessWidget {
@@ -13,7 +14,11 @@ class RestaurantsListView extends StatelessWidget {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         (context, index) => GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+return RestaurantDetailS_View(restaurantModel: restaurantsList[index],);
+            },));
+          },
           child: ReestaurantItem(nearbyrestaurant: restaurantsList[index]),
         ),
         childCount: restaurantsList.length,

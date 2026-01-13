@@ -2,10 +2,12 @@ import 'package:delivery_app/Features/Home/Domain/model/UserLocation1.dart';
 import 'package:delivery_app/Features/Home/data/models/NearbyRestaurantModel.dart';
 import 'package:flutter/material.dart';
 import 'CategoriesListView.dart';
+
 import 'CustomHomeAppBar.dart';
 import 'CustomSearchTextField.dart';
 import 'Home_Header.dart';
 import 'RestaurantsListView.dart';
+
 
 class HomeContentView extends StatelessWidget {
   const HomeContentView({Key? key, required this.restaurantsList,required this.userLocation})

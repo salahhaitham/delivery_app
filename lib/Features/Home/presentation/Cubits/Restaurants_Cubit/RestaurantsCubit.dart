@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:delivery_app/Features/Home/Domain/repo/RestaurantsRepo.dart';
+import 'package:delivery_app/Features/Home/Domain/repo/RestaurantsRepo/GetRestaurantsList.dart';
 import 'package:delivery_app/Features/Home/data/models/NearbyRestaurantModel.dart';
 import 'package:delivery_app/Features/Home/data/models/ResturantModel.dart';
 import 'package:delivery_app/Features/Home/data/models/UserLocation.dart';

@@ -47,7 +47,7 @@ class LocationService {
         final city = placemark.locality ?? '';
         final subLocality = placemark.subLocality ?? '';
 
-        // ندمجهم
+
         if (city.isNotEmpty && subLocality.isNotEmpty) {
           return '$city, $subLocality';
         } else if (city.isNotEmpty) {

@@ -3,7 +3,8 @@ import 'package:delivery_app/core/utils/AppTextStyles.dart';
 import 'package:delivery_app/core/utils/App_Colors.dart';
 import 'package:flutter/material.dart';
 
-import '../../../data/models/CategoryModel.dart';
+import '../../../../../data/models/CategoryModel.dart';
+
 
 class Categoryitem extends StatelessWidget {
   const Categoryitem({Key? key, required this.categoryModel}) : super(key: key);

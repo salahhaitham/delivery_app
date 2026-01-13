@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
-import '../../Cubits/Restaurants_Cubit/RestaurantsCubit.dart';
+import '../../../../Cubits/Restaurants_Cubit/RestaurantsCubit.dart';
 import 'HomeContentView.dart';
 
 class HomeContentLoader extends StatelessWidget {

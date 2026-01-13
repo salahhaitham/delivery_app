@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
 
-import '../../../data/Mock/Mock_Resturants.dart';
-import '../../../data/models/ResturantModel.dart';
+import '../../../../../data/Mock/Mock_Resturants.dart';
+import '../../../../../data/models/ResturantModel.dart';
 
 
 class CategoryView extends StatefulWidget {

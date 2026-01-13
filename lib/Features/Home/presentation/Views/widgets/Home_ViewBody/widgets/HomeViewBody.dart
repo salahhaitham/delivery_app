@@ -2,11 +2,11 @@ import 'package:delivery_app/Features/Home/Domain/model/UserLocation1.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../Cubits/Home_Cubit/Home_Cubit.dart';
-import '../../Cubits/Home_Cubit/Home_state.dart';
-import '../../Cubits/Restaurants_Cubit/RestaurantsCubit.dart';
+import '../../../../Cubits/Home_Cubit/Home_Cubit.dart';
+import '../../../../Cubits/Home_Cubit/Home_state.dart';
+import '../../../../Cubits/Restaurants_Cubit/RestaurantsCubit.dart';
 import 'HomeContentLoader.dart';
-import 'LocationPermissionView.dart';
+import '../../LocationPermissionView.dart';
 
 
   class HomeViewBody extends StatelessWidget {

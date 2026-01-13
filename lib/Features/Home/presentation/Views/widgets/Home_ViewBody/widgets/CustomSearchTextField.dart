@@ -1,8 +1,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:svg_flutter/svg.dart';
-import '../../../../../core/utils/AppTextStyles.dart';
-import '../../../../../core/utils/gen/assets.gen.dart';
+
+import '../../../../../../../core/utils/AppTextStyles.dart';
+
 
 
 class CustomSearchtextfield extends StatelessWidget {

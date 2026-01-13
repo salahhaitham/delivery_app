@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../Features/Home/presentation/Views/MainView.dart';
-import '../../Features/Home/presentation/Views/widgets/categoryView.dart';
+import '../../Features/Home/presentation/Views/widgets/Home_ViewBody/widgets/categoryView.dart';
 
 Route<dynamic> onGenerateRoute(RouteSettings settings){
   switch(settings.name){

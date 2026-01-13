@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:svg_flutter/svg.dart';
 
-import '../../../../../core/utils/gen/assets.gen.dart';
 
 class Customhomeappbar extends StatelessWidget {
   const Customhomeappbar({

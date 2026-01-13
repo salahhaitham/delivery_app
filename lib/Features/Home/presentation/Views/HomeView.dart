@@ -1,9 +1,9 @@
 import 'package:delivery_app/Features/Home/Domain/Services/LocationService.dart';
-import 'package:delivery_app/Features/Home/data/repo/RestaurantsRepoImp.dart';
+import 'package:delivery_app/Features/Home/data/repo/RestaurantsRepo/GetRestaurantsListImp.dart';
 import 'package:delivery_app/Features/Home/presentation/Cubits/Home_Cubit/Home_Cubit.dart';
-import 'package:delivery_app/Features/Home/presentation/Views/widgets/HomeContentView.dart';
-import 'package:delivery_app/Features/Home/presentation/Views/widgets/HomeContentLoader.dart';
-import 'package:delivery_app/Features/Home/presentation/Views/widgets/HomeViewBody.dart';
+
+import 'package:delivery_app/Features/Home/presentation/Views/widgets/Home_ViewBody/widgets/HomeContentLoader.dart';
+import 'package:delivery_app/Features/Home/presentation/Views/widgets/Home_ViewBody/widgets/HomeViewBody.dart';
 import 'package:delivery_app/core/Services/Getit_Service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,7 +24,7 @@ class Homeview extends StatelessWidget {
         providers: [
           BlocProvider(
             create: (context) =>
-                Restaurantscubit(getIt<RestaurantsRepoImp>()),
+                Restaurantscubit(getIt<GetRestaurantsListImp>()),
           ),
           BlocProvider(
             create: (context) => HomeCubit(getIt<LocationService>())..initHome(),
