@@ -1,3 +1,4 @@
+import 'package:delivery_app/Features/Home/data/models/RestaurantDetails_model.dart';
 import 'package:delivery_app/Features/Home/data/models/ResturantModel.dart';
 import 'package:delivery_app/core/utils/App_Colors.dart';
 import 'package:flutter/material.dart';
@@ -9,10 +10,11 @@ import 'Restaurant_Info_Item.dart';
 import 'Title_Section.dart';
 
 class Restaurantdetails_Viewbody extends StatelessWidget {
-  const Restaurantdetails_Viewbody({Key? key, required this.restaurantModel})
+  const Restaurantdetails_Viewbody({Key? key, required this.restaurantModel,required this.menu})
     : super(key: key);
 
   final Nearbyrestaurantmodel restaurantModel;
+  final List<MenuItemModel>menu;
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.sizeOf(context).height;
@@ -23,7 +25,7 @@ class Restaurantdetails_Viewbody extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Restaurant_HeaderImage(
-                restaurantModel: restaurantModel,
+                restaurantModel: restaurantModel.restaurant,
                 height: height,
               ),
 
@@ -58,8 +60,6 @@ class Restaurantdetails_Viewbody extends StatelessWidget {
             ),
           ),
         ),
-
-
       ],
     );
   }

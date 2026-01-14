@@ -1,4 +1,5 @@
 
+import 'package:delivery_app/Features/Home/data/models/ResturantModel.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../data/models/NearbyRestaurantModel.dart';
@@ -10,7 +11,7 @@ class Restaurant_HeaderImage extends StatelessWidget {
     required this.height,
   });
 
-  final Nearbyrestaurantmodel restaurantModel;
+  final RestaurantModel restaurantModel;
   final double height;
 
   @override
@@ -18,7 +19,7 @@ class Restaurant_HeaderImage extends StatelessWidget {
     return Stack(
       children: [
         Image.asset(
-          restaurantModel.restaurant.image,
+          restaurantModel.image,
           height: height*0.3,
           width: double.infinity,
           fit: BoxFit.cover,

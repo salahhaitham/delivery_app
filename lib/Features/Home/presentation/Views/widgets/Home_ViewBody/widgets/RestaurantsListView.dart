@@ -16,7 +16,7 @@ class RestaurantsListView extends StatelessWidget {
         (context, index) => GestureDetector(
           onTap: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-return RestaurantDetailS_View(restaurantModel: restaurantsList[index],);
+return RestaurantDetailS_View(nearbyrestaurantmodel: restaurantsList[index],);
             },));
           },
           child: ReestaurantItem(nearbyrestaurant: restaurantsList[index]),
