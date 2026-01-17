@@ -15,6 +15,7 @@ class Assets {
   static const String imagesItaliano = 'assets/images/italiano.jpg';
   static const String imagesLatinoSandwiches = 'assets/images/LatinoSandwiches.jpg';
   static const String imagesLayrsicon = 'assets/images/layrsicon.svg';
+  static const String imagesMenuPepperoni = 'assets/images/menu/pepperoni.webp';
   static const String imagesOnboarding1 = 'assets/images/onboarding_1.svg';
   static const String imagesOnboarding2 = 'assets/images/onboarding_2.svg';
   static const String imagesPierBurger = 'assets/images/PierBurger.jpg';
@@ -28,5 +29,24 @@ class Assets {
   static const String imagesSplashScreen = 'assets/images/splash_screen.png';
   static const String imagesTomYumBar = 'assets/images/TomYumBar.jpg';
   static const String imagesWatermelonTest = 'assets/images/watermelon_test.png';
+  static const String menuBBQBurger = 'assets/images/menu/BBQBurger.webp';
+  static const String menuBBQBurger2 = 'assets/images/menu/BBQBurger2.jpg';
+  static const String menuBBQChicken = 'assets/images/menu/BBQChicken.jpg';
+  static const String menuBeef = 'assets/images/menu/beef.jpg';
+  static const String menuCheese = 'assets/images/menu/cheese.jpg';
+  static const String menuChicken = 'assets/images/menu/chicken.jpg';
+  static const String menuChickenBurger = 'assets/images/menu/chickenBurger.jpg';
+  static const String menuClassicBurger = 'assets/images/menu/classicBurger.jpg';
+  static const String menuDoubleBurger = 'assets/images/menu/DoubleBurger.jpg';
+  static const String menuHotDog = 'assets/images/menu/hotDog.jpg';
+  static const String menuMargherita = 'assets/images/menu/margherita.jpg';
+  static const String menuMashroumBurger = 'assets/images/menu/MashroumBurger.jpg';
+  static const String menuPepperoni = 'assets/images/menu/pepperoni.jpg';
+  static const String menuSeafood = 'assets/images/menu/seafood.jpg';
+  static const String menuShawarma = 'assets/images/menu/shawarma.jpg';
+  static const String menuSpicy = 'assets/images/menu/spicy.jpg';
+  static const String menuSpicyBurger = 'assets/images/menu/SpicyBurger.jpg';
+  static const String menuTuna = 'assets/images/menu/tuna.jpg';
+  static const String menuVigitrian = 'assets/images/menu/Vigitrian.jpg';
 
 }

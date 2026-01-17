@@ -1,65 +1,116 @@
 
+import 'package:delivery_app/Features/Home/data/models/RestaurantDetails_model.dart';
 import 'package:delivery_app/core/utils/App_Colors.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../../core/utils/AppTextStyles.dart';
 
 class FoodItem extends StatelessWidget {
-  const FoodItem({Key? key}) : super(key: key);
+  const FoodItem({
+    Key? key,
+    required this.menuItemModel,
+  }) : super(key: key);
+
+  final MenuItemModel menuItemModel;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-
-      decoration: ShapeDecoration(
-        color: const Color(0xFFF3F5F7),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
-      ),
-      child: Stack(
-        children: [
-
-
-          Positioned.fill(
-              child: Column(
-                children: [
-                  SizedBox(height: 20,),
-                  Flexible(child: Image.network("https://freepngimg.com/thumb/apple_fruit/24454-5-apple-fruit-transparent-image.png")),
-                  SizedBox(height: 24,),
-                  ListTile(
-                    title:   Text(
-                        "unknown",
-                        textAlign: TextAlign.right,
-                        style:AppTextStyles.heading13semiBold
-                    ),
-                    subtitle: Text.rich(
-                      TextSpan(
-                        children: [
-                          TextSpan(
-                              text: '${0}',
-                              style:AppTextStyles.body13Bold.copyWith(color: App_Colors.kSecondaryColor)
-                          ),
-                          TextSpan(
-                              text: '/',
-                              style:AppTextStyles.body13Bold.copyWith(color: App_Colors.kSecondaryColor)
-                          ),
-                          TextSpan(
-                              text: ' الكيلو',
-                              style:AppTextStyles.heading13semiBold.copyWith(color: App_Colors.kSecondaryColor)
-                          ),
-                        ],
-                      ),
-                      textAlign: TextAlign.right,
-                    ),
-                    trailing: CircleAvatar(
-                      backgroundColor: App_Colors.kprimaryColor,
-                      child: Icon(Icons.add,color: Colors.white,),
-                    ),
-                  )
-                ],
-              ))
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(.05),
+            blurRadius: 6,
+            offset: const Offset(0, 3),
+          ),
         ],
       ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // 🖼 IMAGE
+          ClipRRect(
+            borderRadius: const BorderRadius.vertical(
+              top: Radius.circular(12),
+            ),
+            child: AspectRatio(
+              aspectRatio: 1,
+              child: Image.asset(
+                menuItemModel.image,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
 
+          // 📄 CONTENT
+          Padding(
+            padding: const EdgeInsets.fromLTRB(8, 8, 8, 6),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // NAME
+                Text(
+                  menuItemModel.name,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: AppTextStyles.heading13semiBold,
+                ),
+
+                const SizedBox(height: 4),
+
+                // DESCRIPTION
+                Text(
+                  menuItemModel.description,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: AppTextStyles.body13Regular.copyWith(
+                    color: Colors.grey.shade600,
+                  ),
+                ),
+
+                const SizedBox(height: 8),
+
+                // PRICE + ADD BUTTON
+                Row(
+                  children: [
+                    Text(
+                      '${menuItemModel.price} EGP',
+                      style: AppTextStyles.body13Bold.copyWith(
+                        color: App_Colors.kSecondaryColor,
+                      ),
+                    ),
+
+                    const Spacer(),
+
+                    InkWell(
+                      onTap: () {
+                        // add to cart
+                      },
+                      borderRadius: BorderRadius.circular(20),
+                      child: Container(
+                        width: 28,
+                        height: 28,
+                        decoration: BoxDecoration(
+                          color: App_Colors.kprimaryColor,
+                          shape: BoxShape.circle,
+                        ),
+                        child: const Icon(
+                          Icons.add,
+                          size: 16,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
+

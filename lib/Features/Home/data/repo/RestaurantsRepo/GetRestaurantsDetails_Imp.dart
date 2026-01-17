@@ -6,21 +6,19 @@ import 'package:delivery_app/core/errors/Failure.dart';
 
 import '../../Mock/Mock_Menus.dart';
 
-class GetRestaurantsDetails_Imp extends GetrestaurantsDetails{
+class GetRestaurantsDetails_Imp extends GetrestaurantMenu {
   @override
-  Future<Either<Failure, List<MenuItemModel>>> getRestaurantMenu(String id) async{
+  Future<Either<Failure, List<MenuItemModel>>> getRestaurantMenu(
+    String id,
+  ) async {
     try {
       await Future.delayed(const Duration(milliseconds: 500));
 
-
-
-      final items = MockMenuItems.itemsByCategory[id] ?? [];
+      final items = MockMenuItems.getItemsByRestaurantId(id);
 
       return right(items);
     } on Exception catch (e) {
       return left(Failure(e.toString()));
     }
   }
-
-
 }

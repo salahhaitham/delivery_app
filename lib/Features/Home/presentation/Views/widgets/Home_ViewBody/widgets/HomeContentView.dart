@@ -28,7 +28,7 @@ class HomeContentView extends StatelessWidget {
                 Customhomeappbar(userLocation: userLocation,),
                 const SizedBox(height: 16),
                 CustomSearchtextfield(),
-                const SizedBox(height: 24),
+                const SizedBox(height: 16),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.06,
                   child: Categorieslistview(),

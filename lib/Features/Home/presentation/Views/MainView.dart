@@ -1,8 +1,6 @@
-
-import 'package:delivery_app/Features/Home/presentation/Views/widgets/CartView.dart';
+import 'package:delivery_app/Features/Cart/presentaion/Views/cartView.dart';
 import 'package:delivery_app/Features/Home/presentation/Views/widgets/CustomBottomNavBar.dart';
 import 'package:flutter/material.dart';
-
 import 'HomeView.dart';
 import 'widgets/MainViewBody.dart';
 
@@ -23,6 +21,7 @@ class _MainviewState extends State<Mainview> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       bottomNavigationBar: Custombottomnavbar(
         currentIndex: currentIndex,
         ontapChanged: (index) {

@@ -6,11 +6,11 @@ import 'package:meta/meta.dart';
 part 'get_restaurants_Menu_state.dart';
 
 class GetRestaurantMenuCubit extends Cubit<GetRestaurantMenuState> {
-  GetRestaurantMenuCubit(this.getrestaurantsDetails) : super(GetRestaurantMenuInitial());
-GetrestaurantsDetails getrestaurantsDetails;
+  GetRestaurantMenuCubit(this.getrestaurantMenu) : super(GetRestaurantMenuInitial());
+GetrestaurantMenu getrestaurantMenu;
 Future <void>getDetails(String id)async{
 emit(GetRestaurantMenuLoading());
-  final result=await getrestaurantsDetails.getRestaurantMenu(id);
+  final result=await getrestaurantMenu.getRestaurantMenu(id);
   result.fold(
           (failure){
           emit(GetRestaurantMenuFailure(failure.errMessage));

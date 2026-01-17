@@ -1,5 +1,6 @@
 import 'package:delivery_app/Features/Home/data/models/RestaurantDetails_model.dart';
 import 'package:delivery_app/Features/Home/data/models/ResturantModel.dart';
+import 'package:delivery_app/Features/Home/presentation/Views/widgets/Restaurant_Details/widgets/Food_Item.dart';
 import 'package:delivery_app/core/utils/App_Colors.dart';
 import 'package:flutter/material.dart';
 
@@ -10,11 +11,14 @@ import 'Restaurant_Info_Item.dart';
 import 'Title_Section.dart';
 
 class Restaurantdetails_Viewbody extends StatelessWidget {
-  const Restaurantdetails_Viewbody({Key? key, required this.restaurantModel,required this.menu})
-    : super(key: key);
+  const Restaurantdetails_Viewbody({
+    Key? key,
+    required this.restaurantModel,
+    required this.menu,
+  }) : super(key: key);
 
   final Nearbyrestaurantmodel restaurantModel;
-  final List<MenuItemModel>menu;
+  final List<MenuItemModel> menu;
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.sizeOf(context).height;
@@ -57,6 +61,20 @@ class Restaurantdetails_Viewbody extends StatelessWidget {
                 ),
                 SizedBox(height: 12),
               ],
+            ),
+          ),
+        ),
+        SliverPadding(
+          padding: EdgeInsets.symmetric(horizontal: 8),
+          sliver:  SliverGrid(
+            delegate: SliverChildBuilderDelegate(
+                    childCount: 6,
+                    (context, index) => FoodItem(menuItemModel: menu[index],)),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              mainAxisSpacing: 16,
+              crossAxisSpacing: 16,
+              childAspectRatio: 0.65
             ),
           ),
         ),
