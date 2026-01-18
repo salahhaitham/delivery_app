@@ -1,7 +1,10 @@
 
+import 'package:delivery_app/Features/Cart/presentaion/Cubit/CartCubit/cart_cubit.dart';
 import 'package:delivery_app/Features/Home/data/models/RestaurantDetails_model.dart';
 import 'package:delivery_app/core/utils/App_Colors.dart';
+import 'package:delivery_app/core/widgets/ShowSnackBar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../../core/utils/AppTextStyles.dart';
 
@@ -86,7 +89,7 @@ class FoodItem extends StatelessWidget {
 
                     InkWell(
                       onTap: () {
-                        // add to cart
+                        context.read<CartCubit>().addProduct(menuItemModel);
                       },
                       borderRadius: BorderRadius.circular(20),
                       child: Container(

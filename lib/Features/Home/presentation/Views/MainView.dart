@@ -1,6 +1,10 @@
+
+import 'package:delivery_app/Features/Cart/presentaion/Cubit/CartCubit/cart_cubit.dart';
 import 'package:delivery_app/Features/Cart/presentaion/Views/cartView.dart';
 import 'package:delivery_app/Features/Home/presentation/Views/widgets/CustomBottomNavBar.dart';
+import 'package:delivery_app/core/Services/Getit_Service.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'HomeView.dart';
 import 'widgets/MainViewBody.dart';
 
@@ -14,14 +18,10 @@ class Mainview extends StatefulWidget {
 
 class _MainviewState extends State<Mainview> {
   int currentIndex = 0;
-  List<Widget>screens=[
-    Homeview(),
-    Cartview()
-  ];
+  List<Widget> screens = [Homeview(), Cartview()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       bottomNavigationBar: Custombottomnavbar(
         currentIndex: currentIndex,
         ontapChanged: (index) {
@@ -30,7 +30,7 @@ class _MainviewState extends State<Mainview> {
           });
         },
       ),
-     body:MainViewBody(currentViewIndex: currentIndex, screens: screens,) ,
+      body: MainViewBody(currentViewIndex: currentIndex, screens: screens),
     );
   }
 }

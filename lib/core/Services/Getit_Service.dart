@@ -1,4 +1,6 @@
 
+
+import 'package:delivery_app/Features/Cart/domain/entities/cartEntity.dart';
 import 'package:delivery_app/Features/Home/Domain/Services/LocationService.dart';
 import 'package:delivery_app/Features/Home/Domain/repo/RestaurantsRepo/GetRestaurantsList.dart';
 import 'package:delivery_app/Features/Home/data/repo/RestaurantsRepo/GetRestaurantsDetails_Imp.dart';
@@ -7,6 +9,7 @@ import 'package:delivery_app/core/Services/DatabaseServices.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../Features/Auth/data/repos/AuthRepoImpl.dart';
+
 import 'FireStoreServices.dart';
 import 'FirebaseAuthService.dart';
 
@@ -18,6 +21,9 @@ void setupServiceLocator() {
   getIt.registerLazySingleton(() => GetRestaurantsListImp());
   getIt.registerLazySingleton(() => LocationService());
   getIt.registerLazySingleton(() => GetRestaurantsDetails_Imp());
+  getIt.registerLazySingleton<CartEntity>(() => CartEntity([]));
+
+
 
 
   getIt.registerLazySingleton(() => AuthRepoImp(getIt<FirebaseAuthService>(),getIt<FireStoreservices>()));
