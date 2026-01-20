@@ -1,14 +1,10 @@
-
 import 'package:delivery_app/Features/Cart/presentaion/Cubit/CartCubit/cart_cubit.dart';
-import 'package:delivery_app/Features/Cart/presentaion/Cubit/cartItemCubit/cart_item_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../../core/utils/AppTextStyles.dart';
 import '../../../../../core/utils/App_Colors.dart';
 import '../../../domain/entities/cartItemEntity.dart';
 import 'cartActionsButton.dart';
-import 'cartViewBody.dart';
 
 class CartItemBody extends StatelessWidget {
   const CartItemBody({
@@ -59,9 +55,8 @@ class CartItemBody extends StatelessWidget {
                 color: App_Colors.kprimaryColor,
               ),
               onPressed: () {
-                context
-                    .read<CartCubit>()
-                    .removeCart(cartItemEntity);
+                context.read<CartCubit>().removeCart(cartItemEntity);
+
               },
             ),
             SizedBox(height: 16,),
@@ -79,8 +74,9 @@ class CartItemBody extends StatelessWidget {
                   ),
                   ontap: () {
 
-                    cartItemEntity.decreaseCount();
-                    context.read<CartItemCubit>().UpdateCartItem(cartItemEntity);
+
+                    context.read<CartCubit>().decreaseItem(cartItemEntity);
+
                   },
                 ),
                 SizedBox(width: 8,),
@@ -93,8 +89,9 @@ class CartItemBody extends StatelessWidget {
                   color: Color(0xffE10C33),
                   icon: Icon(Icons.add, color: Colors.white),
                   ontap: () {
-                    cartItemEntity.increaseCount();
-                    context.read<CartItemCubit>().UpdateCartItem(cartItemEntity);
+
+                    context.read<CartCubit>().increaseItem(cartItemEntity);
+
                   },
                 ),
               ],

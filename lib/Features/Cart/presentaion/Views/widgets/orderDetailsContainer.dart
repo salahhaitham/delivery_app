@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/utils/AppTextStyles.dart';
 import '../../Cubit/CartCubit/cart_cubit.dart';
-import '../../Cubit/cartItemCubit/cart_item_cubit.dart';
 
 class orderDetailsContainer extends StatelessWidget {
   const orderDetailsContainer({
@@ -19,7 +18,7 @@ class orderDetailsContainer extends StatelessWidget {
       right: 0,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: BlocBuilder<CartItemCubit,CartItemState>(
+        child: BlocBuilder<CartCubit,CartState>(
           builder: (context, state) {
             return  Container(
               padding: EdgeInsets.all(16),
@@ -47,7 +46,7 @@ class orderDetailsContainer extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '${context.read<CartCubit>().cartEntity.calculateTotalCards()}EGP',
+                        '${context.read<CartCubit>().state.cart.calculateTotalCards()}EGP',
                         style: AppTextStyles.heading13semiBold.copyWith(
                           color: Colors.white,
                         ),
@@ -81,7 +80,7 @@ class orderDetailsContainer extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '${context.read<CartCubit>().cartEntity.calculateTotalCards()+10} EGP',
+                        '${context.read<CartCubit>().state.cart.calculateTotalCards()+10} EGP',
                         style: AppTextStyles.body16Bold.copyWith(
                           color: Colors.white,
                         ),

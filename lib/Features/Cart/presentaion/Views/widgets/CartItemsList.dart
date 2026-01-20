@@ -6,20 +6,30 @@ import '../../Cubit/CartCubit/cart_cubit.dart';
 import 'cartItem.dart';
 
 class CartItemsList extends StatelessWidget {
-  const CartItemsList({super.key, required this.cartItems});
-  final List<CartItemEntity> cartItems;
+  const CartItemsList({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return
-        SliverList(
-        delegate: SliverChildBuilderDelegate(
-          (context, index) => Padding(
-            padding: const EdgeInsets.symmetric(vertical: 6),
-            child: cartItem(cartItemEntity: context.watch<CartCubit>().cartEntity.cartItems[index]),
-          ),
-          childCount: context.watch<CartCubit>().cartEntity.cartItems.length,
-        ),
-      );
+    print("build list");
+    return BlocBuilder<CartCubit, CartState>(
+      buildWhen: (prev, curr) =>
+      prev.cart.cartItems != curr.cart.cartItems,
+      builder: (context, state) {
+        final items = state.cart.cartItems;
 
+        return SliverList(
+          delegate: SliverChildBuilderDelegate(
+                (context, index) {
+              final item = items[index];
+              return cartItem(
+                key: ValueKey(item.menuItemModel.id),
+                cartItemEntity: item,
+              );
+            },
+            childCount: items.length,
+          ),
+        );
+      },
+    );
   }
 }

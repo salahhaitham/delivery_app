@@ -19,5 +19,11 @@ void increaseCount(){
    count--;
  }
 }
-
+ CartItemEntity copyWith({
+   int? count,
+ }) {
+   return CartItemEntity(
+   menuItemModel,count!
+   );
+ }
 }

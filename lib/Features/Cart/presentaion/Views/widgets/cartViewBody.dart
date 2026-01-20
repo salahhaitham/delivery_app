@@ -1,6 +1,5 @@
 import 'package:delivery_app/Features/Cart/domain/entities/cartItemEntity.dart';
 import 'package:delivery_app/Features/Cart/presentaion/Cubit/CartCubit/cart_cubit.dart';
-import 'package:delivery_app/Features/Cart/presentaion/Cubit/cartItemCubit/cart_item_cubit.dart';
 import 'package:delivery_app/core/utils/AppTextStyles.dart';
 import 'package:delivery_app/core/utils/App_Colors.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +15,7 @@ class Cartviewbody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
+ print("build list");
     const double checkoutHeight = 180;
     return Stack(
       children: [
@@ -40,8 +39,14 @@ class Cartviewbody extends StatelessWidget {
                   ],
                 ),
               ),
-              CartItemsList(cartItems: context.watch<CartCubit>().cartEntity.cartItems,),
-              SliverToBoxAdapter(
+
+
+
+
+
+
+ CartItemsList(),
+    SliverToBoxAdapter(
                 child: SizedBox(height: checkoutHeight),
               ),
             ],

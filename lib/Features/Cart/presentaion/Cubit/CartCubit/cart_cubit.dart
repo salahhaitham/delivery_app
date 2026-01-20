@@ -11,22 +11,48 @@ part 'cart_state.dart';
 class CartCubit extends Cubit<CartState> {
   CartCubit() : super(CartInitial());
 
-   CartEntity cartEntity = CartEntity([]);
+
 
   Future<void> addProduct(MenuItemModel foodItem) async {
         try {
-          cartEntity.addOrIncreaseItem(foodItem);
-          emit(CartAdded());
+              var cart= state.cart.addOrIncreaseItem(foodItem);
+
+          emit(CartAdded(cart));
         } catch(e) {
-          emit(CartFailure());
+          emit(CartFailure(state.cart));
         }
   }
   Future<void> removeCart(CartItemEntity cartitem) async {
     try {
-      cartEntity.removeCart(cartitem);
-      emit(CartRemoved());
+     var cart=state.cart.removeCart(cartitem);
+      emit(CartRemoved(cart));
     } catch(e) {
-      emit(CartFailure());
+      emit(CartFailure(state.cart));
     }
   }
+  void increaseItem(CartItemEntity item) {
+    final updatedItems = state.cart.cartItems.map((cartItem) {
+      if (cartItem.menuItemModel.id == item.menuItemModel.id) {
+        return cartItem.copyWith(
+          count: cartItem.count + 1,
+        );
+      }
+      return cartItem;
+    }).toList();
+
+    emit(CartItemUpdated(CartEntity(updatedItems)));
+  }
+  void decreaseItem(CartItemEntity item) {
+    final updatedItems = state.cart.cartItems.map((cartItem) {
+      if (cartItem.menuItemModel.id == item.menuItemModel.id) {
+        return cartItem.copyWith(
+          count: cartItem.count - 1,
+        );
+      }
+      return cartItem;
+    }).toList();
+
+    emit(CartItemUpdated(CartEntity(updatedItems)));
+  }
+
 }

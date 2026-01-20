@@ -3,9 +3,9 @@ import 'package:delivery_app/Features/Home/data/models/RestaurantDetails_model.d
 import 'package:delivery_app/Features/Home/presentation/Views/widgets/Restaurant_Details/widgets/Food_Item.dart';
 
 class CartEntity{
- List<CartItemEntity>cartItems;
+ final List<CartItemEntity>cartItems;
 
- CartEntity(this.cartItems);
+ const CartEntity(this.cartItems);
 
  double calculateTotalCards(){
   double totalprice=0;
@@ -14,18 +14,25 @@ class CartEntity{
      }
      return totalprice;
  }
- void addOrIncreaseItem(MenuItemModel foodItem) {
-  for (var item in cartItems) {
-   if (item.menuItemModel.name == foodItem.name) {
-    item.increaseCount();
-    return;
-   }
-  }
-  cartItems.add(CartItemEntity(foodItem, 1));
+ CartEntity addOrIncreaseItem(MenuItemModel foodItem) {
+  final items = List<CartItemEntity>.from(cartItems);
+    var index=items.indexWhere((index){
+    return index.menuItemModel.id==foodItem.id;
+    });
+    if(index!=-1){
+     cartItems[index].count++;
+    }else {
+     items.add(CartItemEntity(foodItem, 1));
+    }
+    return CartEntity(items);
  }
- void removeCart(CartItemEntity cartItem){
-  cartItems.removeWhere(
-       (cart) => cart.menuItemModel.name == cartItem.menuItemModel.name,
+ CartEntity removeCart(CartItemEntity cartItem){
+  final items = List<CartItemEntity>.from(cartItems);
+
+  items.removeWhere(
+       (cart) => cart.menuItemModel.id == cartItem.menuItemModel.id,
   );
+  return CartEntity(items);
  }
+
 }
