@@ -1,4 +1,5 @@
 
+import 'package:delivery_app/Features/checkout/presentation/views/checkoutView.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -91,8 +92,10 @@ class orderDetailsContainer extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () {},
-                      child: Text('place my order'),
+                      onPressed: () {
+                         Navigator.pushNamed(context, checkoutView.routename,arguments: state.cart);
+                      },
+                      child: Text('checkout'),
                     ),
                   ),
                 ],

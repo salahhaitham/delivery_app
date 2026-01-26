@@ -33,7 +33,21 @@ class MyApp extends StatelessWidget {
     return BlocProvider(
       create: (context) => CartCubit(),
       child: MaterialApp(
-        theme: ThemeData(fontFamily: "Poppins"),
+        theme: ThemeData(
+          fontFamily: "Poppins",
+          scaffoldBackgroundColor: Colors.white,
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Colors.white,
+            elevation: 0,
+            surfaceTintColor: Colors.transparent,
+            iconTheme: IconThemeData(color: Colors.black),
+            titleTextStyle: TextStyle(
+              color: Colors.black,
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ),
         onGenerateRoute: onGenerateRoute,
         initialRoute: Splashview.routename,
         debugShowCheckedModeBanner: false,

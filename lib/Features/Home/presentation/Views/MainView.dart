@@ -18,9 +18,19 @@ class Mainview extends StatefulWidget {
 
 class _MainviewState extends State<Mainview> {
   int currentIndex = 0;
-  List<Widget> screens = [Homeview(), Cartview()];
+
   @override
   Widget build(BuildContext context) {
+    final screens = [
+      Homeview(),
+      Cartview(
+        onBrowsePressed: () {
+          setState(() {
+            currentIndex = 0;
+          });
+        },
+      ),
+    ];
     return Scaffold(
       bottomNavigationBar: Custombottomnavbar(
         currentIndex: currentIndex,

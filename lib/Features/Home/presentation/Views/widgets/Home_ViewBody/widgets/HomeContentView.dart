@@ -30,7 +30,7 @@ class HomeContentView extends StatelessWidget {
                 CustomSearchtextfield(),
                 const SizedBox(height: 16),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.06,
+                  height: MediaQuery.sizeOf(context).height*0.06,
                   child: Categorieslistview(),
                 ),
                 const SizedBox(height: 16),

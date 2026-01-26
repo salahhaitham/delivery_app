@@ -9,6 +9,7 @@ class cartItem extends StatelessWidget {
   final CartItemEntity cartItemEntity;
   @override
   Widget build(BuildContext context) {
+
     return Container(
         padding: EdgeInsets.symmetric(horizontal: 12, vertical: 21),
         decoration: ShapeDecoration(

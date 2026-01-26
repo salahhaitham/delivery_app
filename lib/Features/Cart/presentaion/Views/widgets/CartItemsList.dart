@@ -10,7 +10,7 @@ class CartItemsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("build list");
+
     return BlocBuilder<CartCubit, CartState>(
       buildWhen: (prev, curr) =>
       prev.cart.cartItems != curr.cart.cartItems,

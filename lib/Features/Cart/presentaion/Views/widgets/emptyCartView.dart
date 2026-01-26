@@ -1,9 +1,13 @@
 
+import 'package:delivery_app/Features/Home/presentation/Cubits/Home_Cubit/Home_Cubit.dart';
+import 'package:delivery_app/Features/Home/presentation/Views/HomeView.dart';
+import 'package:delivery_app/Features/Home/presentation/Views/widgets/Home_ViewBody/widgets/HomeViewBody.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class EmptyCartView extends StatelessWidget {
-  const EmptyCartView({super.key});
-
+  const EmptyCartView({super.key,required this.onBrowsePressed});
+  final VoidCallback onBrowsePressed;
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -27,10 +31,8 @@ class EmptyCartView extends StatelessWidget {
           ),
           const SizedBox(height: 24),
           ElevatedButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: const Text('Browse restaurants'),
+            onPressed: onBrowsePressed,
+            child: const Text('Browse restaurant'),
           ),
         ],
       ),
