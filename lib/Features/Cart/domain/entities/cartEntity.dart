@@ -1,10 +1,10 @@
 import 'package:delivery_app/Features/Cart/domain/entities/cartItemEntity.dart';
-import 'package:delivery_app/Features/Home/data/models/RestaurantDetails_model.dart';
-import 'package:delivery_app/Features/Home/presentation/Views/widgets/Restaurant_Details/widgets/Food_Item.dart';
+
+import '../../../Home/data/models/RestaurantDetails_model.dart';
 
 class CartEntity{
- final List<CartItemEntity>cartItems;
 
+ final List<CartItemEntity>cartItems;
  const CartEntity(this.cartItems);
 
  double calculateTotalCards(){
@@ -20,19 +20,14 @@ class CartEntity{
     return index.menuItemModel.id==foodItem.id;
     });
     if(index!=-1){
-     cartItems[index].count++;
+      items[index] = items[index].copyWith(
+        count: items[index].count + 1,
+      );
     }else {
      items.add(CartItemEntity(foodItem, 1));
     }
     return CartEntity(items);
  }
- CartEntity removeCart(CartItemEntity cartItem){
-  final items = List<CartItemEntity>.from(cartItems);
 
-  items.removeWhere(
-       (cart) => cart.menuItemModel.id == cartItem.menuItemModel.id,
-  );
-  return CartEntity(items);
- }
 
 }

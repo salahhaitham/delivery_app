@@ -24,6 +24,7 @@ class Restaurantdetails_Viewbody extends StatelessWidget {
   final List<MenuItemModel> menu;
   @override
   Widget build(BuildContext context) {
+
     final height = MediaQuery.sizeOf(context).height;
     return BlocListener<CartCubit,CartState>(
       listener: (context, state) {
@@ -83,7 +84,7 @@ class Restaurantdetails_Viewbody extends StatelessWidget {
                 crossAxisCount: 2,
                 mainAxisSpacing: 16,
                 crossAxisSpacing: 16,
-                childAspectRatio: 0.65
+                childAspectRatio: 0.55
               ),
             ),
           ),

@@ -12,7 +12,7 @@ class GetRestaurantsDetails_Imp extends GetrestaurantMenu {
     String id,
   ) async {
     try {
-      await Future.delayed(const Duration(milliseconds: 500));
+      await Future.delayed(const Duration(milliseconds: 300));
 
       final items = MockMenuItems.getItemsByRestaurantId(id);
 

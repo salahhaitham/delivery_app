@@ -75,7 +75,7 @@ class FoodItem extends StatelessWidget {
 
                 const SizedBox(height: 8),
 
-                // PRICE + ADD BUTTON
+
                 Row(
                   children: [
                     Text(
@@ -85,7 +85,7 @@ class FoodItem extends StatelessWidget {
                       ),
                     ),
 
-                    const Spacer(),
+                   Spacer(),
 
                     InkWell(
                       onTap: () {

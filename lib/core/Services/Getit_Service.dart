@@ -21,7 +21,7 @@ void setupServiceLocator() {
   getIt.registerLazySingleton(() => GetRestaurantsListImp());
   getIt.registerLazySingleton(() => LocationService());
   getIt.registerLazySingleton(() => GetRestaurantsDetails_Imp());
-  getIt.registerLazySingleton<CartEntity>(() => CartEntity([]));
+  getIt.registerLazySingleton<CartEntity>(() => CartEntity([],null));
 
 
 

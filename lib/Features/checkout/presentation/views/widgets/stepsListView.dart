@@ -17,7 +17,7 @@ class stepsListView extends StatelessWidget {
                 ontap(index);
               },
               child: StepItem(
-                        isActive: true,
+                        isActive: index<=currentIndex,
                         index: (index) + 1,
                         text: getsteps()[index],
                       ),
