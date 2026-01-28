@@ -79,7 +79,7 @@ class Restaurantdetails_Viewbody extends StatelessWidget {
             sliver:  SliverGrid(
               delegate: SliverChildBuilderDelegate(
                       childCount: 6,
-                      (context, index) => FoodItem(menuItemModel: menu[index],)),
+                      (context, index) => FoodItem(menuItemModel: menu[index],restaurantModel: restaurantModel,)),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 mainAxisSpacing: 16,

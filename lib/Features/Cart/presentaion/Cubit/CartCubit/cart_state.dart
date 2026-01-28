@@ -7,7 +7,7 @@ sealed class CartState {
 }
 
 final class CartInitial extends CartState {
-  const CartInitial() : super(const CartEntity([]));
+  const CartInitial() : super(const CartEntity([],null));
 }
 
 
@@ -20,6 +20,13 @@ final class CartAdded extends CartState {
 
 final class CartRemoved extends CartState {
  const CartRemoved(super.cart);
+}
+final class CartConflict extends CartState {
+final  MenuItemModel menuItemModel;
+const CartConflict(super.cart,this.menuItemModel);
+}
+final class CartCleared extends CartState {
+const CartCleared(super.cart);
 }
 
 final class CartFailure extends CartState {

@@ -47,7 +47,7 @@ class orderDetailsContainer extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '${context.read<CartCubit>().state.cart.calculateTotalCards()}EGP',
+                        '${state.cart.calculateTotalCards()}EGP',
                         style: AppTextStyles.heading13semiBold.copyWith(
                           color: Colors.white,
                         ),
@@ -64,7 +64,7 @@ class orderDetailsContainer extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '10 EGP',
+                        state.cart.calculateDeliveryCharge().toString(),
                         style: AppTextStyles.heading13semiBold.copyWith(
                           color: Colors.white,
                         ),
@@ -81,7 +81,7 @@ class orderDetailsContainer extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '${context.read<CartCubit>().state.cart.calculateTotalCards()+10} EGP',
+                        '${state.cart.calculateTotalCards()+state.cart.calculateDeliveryCharge()} EGP',
                         style: AppTextStyles.body16Bold.copyWith(
                           color: Colors.white,
                         ),

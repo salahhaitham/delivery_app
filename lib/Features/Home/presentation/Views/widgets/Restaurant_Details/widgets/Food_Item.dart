@@ -1,5 +1,6 @@
 
 import 'package:delivery_app/Features/Cart/presentaion/Cubit/CartCubit/cart_cubit.dart';
+import 'package:delivery_app/Features/Home/data/models/NearbyRestaurantModel.dart';
 import 'package:delivery_app/Features/Home/data/models/RestaurantDetails_model.dart';
 import 'package:delivery_app/core/utils/App_Colors.dart';
 import 'package:delivery_app/core/widgets/ShowSnackBar.dart';
@@ -11,13 +12,14 @@ import '../../../../../../../core/utils/AppTextStyles.dart';
 class FoodItem extends StatelessWidget {
   const FoodItem({
     Key? key,
-    required this.menuItemModel,
+    required this.menuItemModel,required this.restaurantModel
   }) : super(key: key);
 
   final MenuItemModel menuItemModel;
-
+final Nearbyrestaurantmodel restaurantModel;
   @override
   Widget build(BuildContext context) {
+
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -89,7 +91,8 @@ class FoodItem extends StatelessWidget {
 
                     InkWell(
                       onTap: () {
-                        context.read<CartCubit>().addProduct(menuItemModel);
+
+                        context.read<CartCubit>().addProduct(menuItemModel,restaurantModel);
                       },
                       borderRadius: BorderRadius.circular(20),
                       child: Container(
