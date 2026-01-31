@@ -83,7 +83,7 @@ final Nearbyrestaurantmodel restaurantModel;
                     Text(
                       '${menuItemModel.price} EGP',
                       style: AppTextStyles.body13Bold.copyWith(
-                        color: App_Colors.kSecondaryColor,
+                        color: App_Colors.kprimaryColor,
                       ),
                     ),
 

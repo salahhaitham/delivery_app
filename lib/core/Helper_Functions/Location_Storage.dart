@@ -16,21 +16,35 @@ class LocationStorage {
     }
   }
 
-  static Future<UserLocation1?> getLocation() async {
-    final prefs = await SharedPreferences.getInstance();
-    final lat = prefs.getDouble(constants.keyLat);
-    final lng = prefs.getDouble(constants.keyLng);
+  static UserLocation1? getLocation()  {
+
+    final lat = SharedPrefernceSinglton.getDouble(constants.keyLat);
+    final lng = SharedPrefernceSinglton.getDouble(constants.keyLng);
     if (lat != null && lng != null) {
-      final name = prefs.getString(constants.keyName);
+      final name = SharedPrefernceSinglton.getString(constants.keyName);
       return UserLocation1(lat: lat, lng: lng, name: name!);
     }
     return null;
   }
 
+
+
+  static String? getLocationName(){
+
+    final name = SharedPrefernceSinglton.getString(constants.keyName);
+    if(name!=null){
+      return name;
+    }else{
+      return "unKnown";
+    }
+
+
+  }
+
   static Future<void> clearLocation() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove(constants.keyLat);
-    await prefs.remove(constants.keyLat);
-    await prefs.remove(constants.keyLat);
+    await prefs.remove(constants.keyLng);
+    await prefs.remove(constants.keyName);
   }
 }

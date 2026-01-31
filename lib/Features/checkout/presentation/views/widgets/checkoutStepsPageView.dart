@@ -6,8 +6,11 @@ import 'addressSection.dart';
 import 'paymentSection.dart';
 
 class checkoutStepsPageView extends StatelessWidget {
-  const checkoutStepsPageView({Key? key,required this.pageController}) : super(key: key);
+  const checkoutStepsPageView({Key? key,required this.pageController,required this.formkey,required this.autoValidate,required this.addressSectionKey}) : super(key: key);
   final PageController pageController;
+  final GlobalKey<FormState>formkey;
+ final ValueNotifier<AutovalidateMode>autoValidate;
+  final GlobalKey<addressSectionState> addressSectionKey ;
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -22,6 +25,6 @@ class checkoutStepsPageView extends StatelessWidget {
     );
   }
   List<Widget> getSteps() {
-    return [shippingSection(), addressSection(), paymentSection()];
+    return [shippingSection(), addressSection(formkey: formkey,autoValidate: autoValidate,key: addressSectionKey,), paymentSection()];
   }
 }

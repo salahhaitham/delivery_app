@@ -14,7 +14,7 @@ class Shipitem extends StatelessWidget {
   }) : super(key: key);
 
   final String title, subTitle;
-  final num price;
+  final String price;
   final bool isSelected;
   final VoidCallback onaTap;
   @override

@@ -14,18 +14,18 @@ class HomeCubit extends Cubit<HomeState> {
   Future<void> initHome() async {
     emit(HomeLoading());
 
-//     final userLocation =await LocationStorage.getLocation();
-//     if(userLocation!=null)
-// {
-//   emit(HomeReady(userLocation));
-//   return;
-// }
+    final userLocation =await LocationStorage.getLocation();
+    if(userLocation!=null)
+{
+  emit(HomeReady(userLocation));
+  return;
+}
     final status = await locationService.checkPermission();
 
     if (status == LocationStatus.granted) {
       final position = await locationService.getLocation();
       final name = await locationService.getLocationName(position);
-   //  LocationStorage.saveLocation(UserLocation1(lat: position.latitude, lng: position.longitude, name: name));
+    LocationStorage.saveLocation(UserLocation1(lat: position.latitude, lng: position.longitude, name: name));
 
       emit(
         HomeReady(

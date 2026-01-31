@@ -1,40 +1,40 @@
+import 'package:delivery_app/Features/checkout/domain/OrderEntity.dart';
+import 'package:delivery_app/Features/checkout/presentation/Cubit/checkout_Cubit.dart';
 import 'package:delivery_app/Features/checkout/presentation/views/widgets/shipItem.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class shippingSection extends StatefulWidget {
+class shippingSection extends StatelessWidget {
   const shippingSection({Key? key}) : super(key: key);
 
   @override
-  State<shippingSection> createState() => _shippingSectionState();
-}
-
-class _shippingSectionState extends State<shippingSection> {
-  int selectedIndex = -1;
-  @override
   Widget build(BuildContext context) {
+    final cart = context.watch<checkoutCubit>().state.orderEntity.cart;
+    final totalOrder =
+        (cart.calculateTotalCards() + cart.calculateDeliveryCharge())
+            .toStringAsFixed(1);
+    final order = context.read<checkoutCubit>();
     return Column(
       children: [
         Shipitem(
           title: "Payment upon receipt",
           subTitle: "Delivery from place",
-          price: 40,
-          isSelected: selectedIndex==0,
+          price: totalOrder.toString(),
+          isSelected:
+              order.state.orderEntity.paymentMethod == PaymentMethod.cash,
           onaTap: () {
-         setState(() {
-            selectedIndex=0;
-         });
+            order.selectPaymentMethod(PaymentMethod.cash);
           },
         ),
-        SizedBox(height: 16,),
+        SizedBox(height: 16),
         Shipitem(
           title: "Buy now and pay later",
           subTitle: "Please select a payment method",
-          price: 1000,
-          isSelected:selectedIndex==1,
+          price: totalOrder.toString(),
+          isSelected:
+              order.state.orderEntity.paymentMethod == PaymentMethod.online,
           onaTap: () {
-            setState(() {
-                 selectedIndex=1;
-            });
+            order.selectPaymentMethod(PaymentMethod.online);
           },
         ),
       ],

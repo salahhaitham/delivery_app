@@ -14,7 +14,7 @@ class checkoutCubit extends Cubit<checkout_States> {
 
         emit(OrderUpdated(updatedOrder));
   }
-  void SetAddress(String address){
+  void SetAddress(AddressDetailsEntity address){
     final updatedOrder= state.orderEntity.copyWith(address: address);
 
     emit(OrderUpdated(updatedOrder));
