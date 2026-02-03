@@ -64,7 +64,7 @@ class _checkoutviewbodyState extends State<checkoutviewbody> {
           const SizedBox(height: 24),
           checkoutStepsPageView(pageController: pageController,formkey: formkey,autoValidate: autoValidate,addressSectionKey: addressSectionKey,),
           CustomButton(
-            text: "next",
+            text: currentIndex==2?"Place Order":"Next",
             onpress: () {
         if(currentIndex==0){
               checkPaymentMethod(context);
@@ -137,6 +137,9 @@ class _checkoutviewbodyState extends State<checkoutviewbody> {
         ShowSnackBar(context, "please select a payment method");
       }
 
-    }
+    }else{
+
+       validateAddressSection(context);
+     }
   }
 }

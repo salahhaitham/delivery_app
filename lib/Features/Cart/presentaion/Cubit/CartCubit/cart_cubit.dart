@@ -12,59 +12,59 @@ part 'cart_state.dart';
 class CartCubit extends Cubit<CartState> {
   CartCubit() : super(CartInitial());
 
-  Future<void> addProduct(MenuItemModel foodItem,Nearbyrestaurantmodel restaurantModel) async {
+  Future<void> addProduct(
+    MenuItemModel foodItem,
+    Nearbyrestaurantmodel restaurantModel,
+  ) async {
     try {
       final cartItems = List<CartItemEntity>.from(state.cart.cartItems);
-      if(cartItems.isEmpty){
-        final currentRestaurant=state.cart.restaurantmodel??restaurantModel;
+      if (cartItems.isEmpty) {
+        final currentRestaurant = state.cart.restaurantmodel ?? restaurantModel;
         var index = cartItems.indexWhere(
-              (cartItem) => cartItem.menuItemModel.id == foodItem.id,
+          (cartItem) => cartItem.menuItemModel.id == foodItem.id,
         );
         if (index != -1) {
-          cartItems[index]=  cartItems[index].copyWith(count: cartItems[index].count + 1);
+          cartItems[index] = cartItems[index].copyWith(
+            count: cartItems[index].count + 1,
+          );
         } else {
           cartItems.add(CartItemEntity(foodItem, 1));
         }
-        emit(CartAdded(CartEntity(cartItems,currentRestaurant)));
-      }else {
-        if(state.cart.restaurantmodel!.restaurant.id==restaurantModel.restaurant.id){
+        emit(CartAdded(CartEntity(cartItems, currentRestaurant)));
+      } else {
+        if (state.cart.restaurantmodel!.restaurant.id ==
+            restaurantModel.restaurant.id) {
           var index = cartItems.indexWhere(
-                (cartItem) => cartItem.menuItemModel.id == foodItem.id,
+            (cartItem) => cartItem.menuItemModel.id == foodItem.id,
           );
           if (index != -1) {
-            cartItems[index]=  cartItems[index].copyWith(count: cartItems[index].count + 1);
+            cartItems[index] = cartItems[index].copyWith(
+              count: cartItems[index].count + 1,
+            );
           } else {
             cartItems.add(CartItemEntity(foodItem, 1));
           }
-          emit(CartAdded(CartEntity(cartItems,restaurantModel)));
-        }else{
-          emit(CartConflict(CartEntity(cartItems, state.cart.restaurantmodel),foodItem));
+          emit(CartAdded(CartEntity(cartItems, restaurantModel)));
+        } else {
+          emit(
+            CartConflict(
+              CartEntity(cartItems, restaurantModel),
+              foodItem,
+            ),
+          );
         }
       }
-    }
-     catch (e) {
+    } catch (e) {
       emit(CartFailure(state.cart));
     }
-
-
-
-  }
-  Future<void> clearAndAddFromNewRestaurant (
-      Nearbyrestaurantmodel restaurant,MenuItemModel foodItem
-      ) async{
-
-    emit( CartAdded(
-        CartEntity(
-          [CartItemEntity(foodItem, 1)],
-          restaurant,
-        )));
-
-
-
-
   }
 
-
+  Future<void> clearAndAddFromNewRestaurant(
+    Nearbyrestaurantmodel restaurant,
+    MenuItemModel foodItem,
+  ) async {
+    emit(CartAdded(CartEntity([CartItemEntity(foodItem, 1)], restaurant)));
+  }
 
   Future<void> removeCart(CartItemEntity cartitem) async {
     try {
@@ -72,7 +72,7 @@ class CartCubit extends Cubit<CartState> {
       cartItems.removeWhere(
         (cart) => cart.menuItemModel.id == cartitem.menuItemModel.id,
       );
-      emit(CartRemoved(CartEntity(cartItems,state.cart.restaurantmodel)));
+      emit(CartRemoved(CartEntity(cartItems, state.cart.restaurantmodel)));
     } catch (e) {
       emit(CartFailure(state.cart));
     }
@@ -86,7 +86,7 @@ class CartCubit extends Cubit<CartState> {
       return cartItem;
     }).toList();
 
-    emit(CartItemUpdated(CartEntity(updatedItems,state.cart.restaurantmodel)));
+    emit(CartItemUpdated(CartEntity(updatedItems, state.cart.restaurantmodel)));
   }
 
   void decreaseItem(CartItemEntity item) {
@@ -97,6 +97,6 @@ class CartCubit extends Cubit<CartState> {
       return cartItem;
     }).toList();
 
-    emit(CartItemUpdated(CartEntity(updatedItems,state.cart.restaurantmodel)));
+    emit(CartItemUpdated(CartEntity(updatedItems, state.cart.restaurantmodel)));
   }
 }

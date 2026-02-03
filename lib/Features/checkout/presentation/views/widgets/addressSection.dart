@@ -1,12 +1,10 @@
-import 'package:delivery_app/Features/checkout/domain/OrderEntity.dart';
 import 'package:delivery_app/Features/checkout/presentation/Cubit/checkout_Cubit.dart';
 import 'package:delivery_app/core/Helper_Functions/Location_Storage.dart';
-import 'package:delivery_app/core/utils/AppTextStyles.dart';
-import 'package:delivery_app/core/utils/App_Colors.dart';
-import 'package:delivery_app/core/widgets/CustomTextFormField.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../domain/ShippingAdderessEntity.dart';
 import 'CustomAddress_TextField.dart';
 import 'address_Container.dart';
 
@@ -23,11 +21,11 @@ class addressSection extends StatefulWidget {
 class addressSectionState extends State<addressSection> with AutomaticKeepAliveClientMixin{
   String? buildingNumber,apartment,floor;
 
-
+  final location= LocationStorage.getLocation();
   @override
   Widget build(BuildContext context) {
+    super.build(context);
 
-     final location= LocationStorage.getLocation();
 
     return ValueListenableBuilder(
          valueListenable: widget.autoValidate,
@@ -53,18 +51,17 @@ class addressSectionState extends State<addressSection> with AutomaticKeepAliveC
   }
   void saveAddressToCubit() {
     context.read<checkoutCubit>().SetAddress(
-      AddressDetailsEntity(
+      ShippingAddressOrderEntity(
         int.tryParse(buildingNumber ?? ''),
         int.tryParse(apartment ?? ''),
         int.tryParse(floor ?? ''),
-        LocationStorage.getLocation(),
+        location,null
       ),
     );
   }
 
   @override
-  // TODO: implement wantKeepAlive
-  bool get wantKeepAlive => throw UnimplementedError();
+  bool get wantKeepAlive => true;
 }
 
 

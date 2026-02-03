@@ -1,6 +1,7 @@
 import 'package:delivery_app/Features/Cart/domain/entities/cartEntity.dart';
 
 import '../../Home/Domain/model/UserLocation1.dart';
+import 'ShippingAdderessEntity.dart';
 
 
 enum PaymentMethod { cash, online }
@@ -8,39 +9,24 @@ enum PaymentMethod { cash, online }
 class OrderEntity {
   final CartEntity cart;
   final PaymentMethod? paymentMethod;
-   AddressDetailsEntity? address;
+ final  ShippingAddressOrderEntity? addressEntity;
 
    OrderEntity({
     required this.cart,
     this.paymentMethod,
-    this.address,
+    this.addressEntity,
   });
 
   OrderEntity copyWith({
     CartEntity? cart,
     PaymentMethod? paymentMethod,
-    AddressDetailsEntity? address,
+    ShippingAddressOrderEntity? address,
   }) {
     return OrderEntity(
       cart: cart ?? this.cart,
       paymentMethod: paymentMethod ?? this.paymentMethod,
-      address: address ??this.address,
+      addressEntity: address ??this.addressEntity,
     );
-  }
-
-}
-class AddressDetailsEntity{
-  final UserLocation1? userLocation;
-  final int? buildingNumber;
-  final int? apartment;
-  final int? floor;
-
-  AddressDetailsEntity(this.buildingNumber, this.apartment, this.floor,this.userLocation);
-
-  @override
-  String toString() {
-
-    return "$buildingNumber $apartment $floor";
   }
 
 }

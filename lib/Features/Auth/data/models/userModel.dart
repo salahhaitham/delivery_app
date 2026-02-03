@@ -9,7 +9,8 @@ class UserModel extends UserEntity {
     required super.email,
     required super.Uid,
     required super.UserName,
-    super.profileImg
+    super.profileImg,
+    required super.phoneNumber
   });
 
   factory UserModel.fromfirebaseAuth(User user) {
@@ -17,6 +18,7 @@ class UserModel extends UserEntity {
       email: user.email ?? "",
       Uid: user.uid ?? "",
       UserName: user.displayName ?? "",
+      phoneNumber: user.phoneNumber??""
 
     );
   }
@@ -25,16 +27,18 @@ class UserModel extends UserEntity {
         email:json['email']??"",
         Uid:json['Uid']??"",
         UserName:json['name']??"",
-        profileImg: json["profileImage"]
+        profileImg: json["profileImage"],
+        phoneNumber: json["phoneNumber"]??""
 
     );
   }
-  factory UserModel.fromuserentity(UserEntity user) {
+  factory UserModel.fromuserentity(UserEntity userEntity) {
     return UserModel(
-        email:user.email,
-        Uid:user.Uid,
-        UserName:user.UserName,
-        profileImg: user.profileImg
+        email:userEntity.email,
+        Uid:userEntity.Uid,
+        UserName:userEntity.UserName,
+        profileImg: userEntity.profileImg,
+        phoneNumber: userEntity.phoneNumber
     );
   }
   ToMab(){
@@ -43,7 +47,8 @@ class UserModel extends UserEntity {
         'name':UserName,
         'email':email,
         'Uid':Uid,
-        "profileImage": profileImg
+        "profileImage": profileImg,
+        "phoneNumber":phoneNumber
       };
   }
 

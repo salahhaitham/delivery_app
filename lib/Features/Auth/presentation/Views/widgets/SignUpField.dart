@@ -9,10 +9,12 @@ class SignUpField extends StatelessWidget {
     required this.onNameSaved,
     required this.onEmailSaved,
     required this.onPasswordSaved,
+    required this.onPhoneNumberSaved
   }) : super(key: key);
   final Function(String?) onNameSaved;
   final Function(String?) onEmailSaved;
   final Function(String?) onPasswordSaved;
+  final Function(String?) onPhoneNumberSaved;
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +35,10 @@ class SignUpField extends StatelessWidget {
         Text("Password", style: AppTextStyles.heading13semiBold),
         SizedBox(height: 4),
         CustomTextFormField(onSaved: onPasswordSaved, ispassword: true),
+        SizedBox(height: 4),
+        Text("phoneNumber", style: AppTextStyles.heading13semiBold),
+        SizedBox(height: 4),
+        CustomTextFormField(onSaved: onPasswordSaved),
       ],
     );
   }

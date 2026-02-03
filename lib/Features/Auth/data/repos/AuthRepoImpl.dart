@@ -27,6 +27,7 @@ class AuthRepoImp extends AuthRepo {
       String email,
       String password,
       String username,
+      String phoneNumber
       ) async {
     User? user;
     try {
@@ -39,6 +40,7 @@ class AuthRepoImp extends AuthRepo {
         email: email,
         Uid: user.uid,
         UserName: username,
+        phoneNumber: phoneNumber
       );
 
       await AddUserData(user: userentity);

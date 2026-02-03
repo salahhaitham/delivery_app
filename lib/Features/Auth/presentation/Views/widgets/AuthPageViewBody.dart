@@ -24,7 +24,7 @@ class _AuthpageviewbodyState extends State<Authpageviewbody> {
   GlobalKey<FormState> formkey = GlobalKey();
   bool iscreatingAccount = true;
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
- late String email, password, name;
+ late String email, password, name ,phoneNumber;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -78,6 +78,7 @@ class _AuthpageviewbodyState extends State<Authpageviewbody> {
 
                     iscreatingAccount
                         ? SignUpField(
+                      onPhoneNumberSaved: (p0) => phoneNumber=p0!,
                             onEmailSaved: (p0) => email = p0!,
                             onNameSaved: (p0) => name = p0!,
                             onPasswordSaved: (p0) => password = p0!,
@@ -93,7 +94,7 @@ class _AuthpageviewbodyState extends State<Authpageviewbody> {
                             onPressed: () {
                               if (formkey.currentState!.validate()) {
                                 formkey.currentState!.save();
-                                context.read<Authcubit>().CreateUserWithEmailandPassword(email, password, name);
+                                context.read<Authcubit>().CreateUserWithEmailandPassword(email, password, name,phoneNumber );
                               } else {
                                 setState(() {
                                   autovalidateMode = AutovalidateMode.always;

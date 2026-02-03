@@ -3,6 +3,8 @@ import 'package:delivery_app/Features/Cart/domain/entities/cartEntity.dart';
 import 'package:delivery_app/Features/checkout/domain/OrderEntity.dart';
 import 'package:meta/meta.dart';
 
+import '../../domain/ShippingAdderessEntity.dart';
+
 part 'checkout_State.dart';
 
 class checkoutCubit extends Cubit<checkout_States> {
@@ -14,7 +16,7 @@ class checkoutCubit extends Cubit<checkout_States> {
 
         emit(OrderUpdated(updatedOrder));
   }
-  void SetAddress(AddressDetailsEntity address){
+  void SetAddress(ShippingAddressOrderEntity address){
     final updatedOrder= state.orderEntity.copyWith(address: address);
 
     emit(OrderUpdated(updatedOrder));

@@ -11,7 +11,7 @@ class shippingSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final cart = context.watch<checkoutCubit>().state.orderEntity.cart;
     final totalOrder =
-        (cart.calculateTotalCards() + cart.calculateDeliveryCharge())
+        (cart.calculateSubTotal() + cart.calculateDeliveryCharge())
             .toStringAsFixed(1);
     final order = context.read<checkoutCubit>();
     return Column(

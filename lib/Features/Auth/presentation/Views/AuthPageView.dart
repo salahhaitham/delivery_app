@@ -32,8 +32,11 @@ class AuthPageView_BlocBuider extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<Authcubit, AuthState>(
       listener: (context, state) async{
-        if (state is SignInFailure || state is SignUpFailure) {
-          ShowSnackBar(context, state.toString());
+        if (state is SignInFailure) {
+          ShowSnackBar(context, state.message.toString());
+        }
+        if (state is SignUpFailure) {
+          ShowSnackBar(context, state.message.toString());
         }
         if(state is SignInSuccess){
 

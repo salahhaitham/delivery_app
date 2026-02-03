@@ -1,4 +1,3 @@
-
 import 'package:delivery_app/Features/Cart/presentaion/Cubit/CartCubit/cart_cubit.dart';
 import 'package:delivery_app/Features/Home/data/models/NearbyRestaurantModel.dart';
 import 'package:delivery_app/Features/Home/data/models/RestaurantDetails_model.dart';
@@ -12,14 +11,14 @@ import '../../../../../../../core/utils/AppTextStyles.dart';
 class FoodItem extends StatelessWidget {
   const FoodItem({
     Key? key,
-    required this.menuItemModel,required this.restaurantModel
+    required this.menuItemModel,
+    required this.restaurantModel,
   }) : super(key: key);
 
   final MenuItemModel menuItemModel;
-final Nearbyrestaurantmodel restaurantModel;
+  final Nearbyrestaurantmodel restaurantModel;
   @override
   Widget build(BuildContext context) {
-
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -37,19 +36,14 @@ final Nearbyrestaurantmodel restaurantModel;
         children: [
           // 🖼 IMAGE
           ClipRRect(
-            borderRadius: const BorderRadius.vertical(
-              top: Radius.circular(12),
-            ),
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
             child: AspectRatio(
               aspectRatio: 1,
-              child: Image.asset(
-                menuItemModel.image,
-                fit: BoxFit.cover,
-              ),
+              child: Image.asset(menuItemModel.image, fit: BoxFit.cover),
             ),
           ),
 
-          // 📄 CONTENT
+
           Padding(
             padding: const EdgeInsets.fromLTRB(8, 8, 8, 6),
             child: Column(
@@ -77,7 +71,6 @@ final Nearbyrestaurantmodel restaurantModel;
 
                 const SizedBox(height: 8),
 
-
                 Row(
                   children: [
                     Text(
@@ -87,12 +80,14 @@ final Nearbyrestaurantmodel restaurantModel;
                       ),
                     ),
 
-                   Spacer(),
+                    Spacer(),
 
                     InkWell(
                       onTap: () {
-
-                        context.read<CartCubit>().addProduct(menuItemModel,restaurantModel);
+                        context.read<CartCubit>().addProduct(
+                          menuItemModel,
+                          restaurantModel,
+                        );
                       },
                       borderRadius: BorderRadius.circular(20),
                       child: Container(
@@ -119,4 +114,3 @@ final Nearbyrestaurantmodel restaurantModel;
     );
   }
 }
-

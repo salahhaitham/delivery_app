@@ -29,12 +29,12 @@ class Authcubit extends Cubit<AuthState> {
       (userentity) => emit(SignInSuccess(userentity)),
     );
   }
-  Future<void>CreateUserWithEmailandPassword(String email,String password,String username)async{
+  Future<void>CreateUserWithEmailandPassword(String email,String password,String username,String phoneNumber)async{
     if (state is SignUpLoading) return;
 
     emit(SignUpLoading());
 
-    var result=await authRepo.CreateUserWithEmailAndPassword(email, password,username);
+    var result=await authRepo.CreateUserWithEmailAndPassword(email, password,username,phoneNumber);
     result.fold(
             (failure)=>emit(SignUpFailure(failure.errMessage)),
             (userentity)=>emit(SignUpSuccess(userentity))
