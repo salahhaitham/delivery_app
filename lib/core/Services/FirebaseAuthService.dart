@@ -24,6 +24,7 @@ class FirebaseAuthService{
       );
       await credential.user?.updateDisplayName(name);
       await credential.user?.reload();
+
       return credential.user!;
     } on FirebaseAuthException catch (e) {
       switch (e.code) {

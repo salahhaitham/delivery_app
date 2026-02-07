@@ -1,5 +1,5 @@
 import 'package:delivery_app/Features/checkout/domain/OrderEntity.dart';
-import 'package:delivery_app/Features/checkout/presentation/Cubit/checkout_Cubit.dart';
+import 'package:delivery_app/Features/checkout/presentation/Cubit/checkout/checkout_Cubit.dart';
 import 'package:delivery_app/Features/checkout/presentation/views/widgets/shipItem.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -1,4 +1,6 @@
-import 'package:delivery_app/Features/checkout/presentation/Cubit/checkout_Cubit.dart';
+import 'package:delivery_app/Features/checkout/data/models/OrderModel.dart';
+import 'package:delivery_app/Features/checkout/presentation/Cubit/checkout/checkout_Cubit.dart';
+import 'package:delivery_app/Features/checkout/presentation/Cubit/order/order_cubit.dart';
 import 'package:delivery_app/Features/checkout/presentation/views/widgets/addressSection.dart';
 import 'package:delivery_app/Features/checkout/presentation/views/widgets/stepsListView.dart';
 import 'package:delivery_app/core/widgets/Custom_Button.dart';
@@ -18,7 +20,7 @@ class checkoutviewbody extends StatefulWidget {
 class _checkoutviewbodyState extends State<checkoutviewbody> {
   late PageController pageController;
   int currentIndex = 0;
-  GlobalKey<FormState>formkey=GlobalKey();
+  GlobalKey<FormState> formkey = GlobalKey();
   final GlobalKey<addressSectionState> addressSectionKey = GlobalKey();
 
   ValueNotifier<AutovalidateMode> autoValidate = ValueNotifier(
@@ -34,12 +36,14 @@ class _checkoutviewbodyState extends State<checkoutviewbody> {
       setState(() {});
     });
   }
+
   @override
   void dispose() {
     pageController.dispose();
     autoValidate.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -62,16 +66,30 @@ class _checkoutviewbodyState extends State<checkoutviewbody> {
             },
           ),
           const SizedBox(height: 24),
-          checkoutStepsPageView(pageController: pageController,formkey: formkey,autoValidate: autoValidate,addressSectionKey: addressSectionKey,),
+          checkoutStepsPageView(
+            pageController: pageController,
+            formkey: formkey,
+            autoValidate: autoValidate,
+            addressSectionKey: addressSectionKey,
+          ),
           CustomButton(
-            text: currentIndex==2?"Place Order":"Next",
+            text: currentIndex == 2 ? "Place Order" : "Next",
             onpress: () {
-        if(currentIndex==0){
-              checkPaymentMethod(context);
-            }else if(currentIndex==1){
-               validateAddressSection(context);
-        }
-            }
+              if (currentIndex == 0) {
+                checkPaymentMethod(context);
+              } else if (currentIndex == 1) {
+                validateAddressSection(context);
+              } else {
+                final orderEntity = context
+                    .read<checkoutCubit>()
+                    .state
+                    .orderEntity;
+
+                context.read<OrderCubit>().addOrder(
+                orderEntity
+                );
+              }
+            },
           ),
           SizedBox(height: MediaQuery.sizeOf(context).height * 0.1),
         ],
@@ -79,15 +97,8 @@ class _checkoutviewbodyState extends State<checkoutviewbody> {
     );
   }
 
-
-
   void checkPaymentMethod(BuildContext context) {
-    if (context
-            .read<checkoutCubit>()
-            .state
-            .orderEntity
-            .paymentMethod !=
-        null) {
+    if (context.read<checkoutCubit>().state.orderEntity.paymentMethod != null) {
       pageController.animateToPage(
         currentIndex + 1,
         duration: const Duration(milliseconds: 300),
@@ -99,34 +110,29 @@ class _checkoutviewbodyState extends State<checkoutviewbody> {
   }
 
   void validateAddressSection(BuildContext context) {
-     if(formkey.currentState!.validate()){
-       formkey.currentState!.save();
-        addressSectionKey.currentState!.saveAddressToCubit();
+    if (formkey.currentState!.validate()) {
+      formkey.currentState!.save();
+      addressSectionKey.currentState!.saveAddressToCubit();
       pageController.animateToPage(
         currentIndex + 1,
         duration: Duration(milliseconds: 300),
         curve: Curves.ease,
       );
-    }else{
-                  autoValidate.value=AutovalidateMode.always;
-                  ShowSnackBar(context, "من فضلك أكمل البيانات");
+    } else {
+      autoValidate.value = AutovalidateMode.always;
+      ShowSnackBar(context, "من فضلك أكمل البيانات");
     }
   }
 
-
   void handlePageNavigation(index, BuildContext context) {
-     if (index == 0) {
+    if (index == 0) {
       pageController.animateToPage(
         index,
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeIn,
       );
     } else if (index == 1) {
-      if (context
-              .read<checkoutCubit>()
-              .state
-              .orderEntity
-              .paymentMethod !=
+      if (context.read<checkoutCubit>().state.orderEntity.paymentMethod !=
           null) {
         pageController.animateToPage(
           index,
@@ -136,10 +142,8 @@ class _checkoutviewbodyState extends State<checkoutviewbody> {
       } else {
         ShowSnackBar(context, "please select a payment method");
       }
-
-    }else{
-
-       validateAddressSection(context);
-     }
+    } else {
+      validateAddressSection(context);
+    }
   }
 }

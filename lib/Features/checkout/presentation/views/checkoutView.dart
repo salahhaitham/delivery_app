@@ -1,6 +1,10 @@
 import 'package:delivery_app/Features/Cart/domain/entities/cartEntity.dart';
-import 'package:delivery_app/Features/checkout/presentation/Cubit/checkout_Cubit.dart';
+import 'package:delivery_app/Features/checkout/data/repo/orderRepoImp.dart';
+import 'package:delivery_app/Features/checkout/domain/repo/orderRepo.dart';
+import 'package:delivery_app/Features/checkout/presentation/Cubit/checkout/checkout_Cubit.dart';
+import 'package:delivery_app/Features/checkout/presentation/Cubit/order/order_cubit.dart';
 import 'package:delivery_app/Features/checkout/presentation/views/widgets/checkoutViewBody.dart';
+import 'package:delivery_app/core/Services/Getit_Service.dart';
 import 'package:delivery_app/core/utils/AppTextStyles.dart';
 import 'package:delivery_app/core/utils/App_Colors.dart';
 import 'package:flutter/material.dart';
@@ -23,8 +27,12 @@ class checkoutView extends StatelessWidget {
           child: Icon(Icons.arrow_back_ios_rounded,color: Colors.white,),
         ),
       ),
-      body: BlocProvider(
-        create: (context) => checkoutCubit(cartEntity),
+      body: MultiBlocProvider(
+        providers: [
+          BlocProvider( create: (context) => checkoutCubit(cartEntity),),
+          BlocProvider( create: (context) => OrderCubit(getIt<OrderRepoImp>()),)
+        ],
+
         child: Container(
           color: App_Colors.kprimaryColor, // نفس لون AppBar
           child: const checkoutviewbody(),

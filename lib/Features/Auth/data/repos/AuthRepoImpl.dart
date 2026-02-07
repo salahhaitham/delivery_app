@@ -44,6 +44,8 @@ class AuthRepoImp extends AuthRepo {
       );
 
       await AddUserData(user: userentity);
+       final userdata=await getUserData(userid: user.uid);
+       await SaveUserData(user: userdata);
       return right(userentity);
     } on CustomException catch (e) {
       return left(Failure(e.message));
@@ -88,7 +90,7 @@ class AuthRepoImp extends AuthRepo {
   @override
   Future<UserEntity> getUserData({required String userid}) async {
     var userdata = await databaseServices.getdata(
-      path: Backend_EndPoints.getusersdata,
+      path: Backend_EndPoints.Userscollection,
       documentid: userid,
     );
     return UserModel.fromjson(userdata);

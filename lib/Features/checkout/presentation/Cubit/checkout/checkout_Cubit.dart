@@ -3,7 +3,7 @@ import 'package:delivery_app/Features/Cart/domain/entities/cartEntity.dart';
 import 'package:delivery_app/Features/checkout/domain/OrderEntity.dart';
 import 'package:meta/meta.dart';
 
-import '../../domain/ShippingAdderessEntity.dart';
+import '../../../domain/ShippingAdderessEntity.dart';
 
 part 'checkout_State.dart';
 

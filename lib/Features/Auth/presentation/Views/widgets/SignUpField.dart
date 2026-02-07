@@ -38,7 +38,7 @@ class SignUpField extends StatelessWidget {
         SizedBox(height: 4),
         Text("phoneNumber", style: AppTextStyles.heading13semiBold),
         SizedBox(height: 4),
-        CustomTextFormField(onSaved: onPasswordSaved),
+        CustomTextFormField(onSaved: onPhoneNumberSaved),
       ],
     );
   }
