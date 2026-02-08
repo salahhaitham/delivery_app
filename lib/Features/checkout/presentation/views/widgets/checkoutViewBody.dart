@@ -95,17 +95,18 @@ class _checkoutviewbodyState extends State<checkoutviewbody> {
   }
 
   void payWithPaypal(BuildContext context) {
-     final order=context.read<checkoutCubit>().state.orderEntity;
-
+     final orderEntity=context.read<checkoutCubit>().state.orderEntity;
+        final orderCubit=context.read<OrderCubit>();
     Navigator.of(context).push(MaterialPageRoute(
       builder: (BuildContext context) => PaypalCheckoutView(
         sandboxMode: true,
         clientId: "AZihRXBXaNlVjYkrEunJvR29qehMk71WFALYOR1ly7dUgGsAXFn-X5w5Csqrq5eQ8YZge_l7_ReH2uGh",
         secretKey: "EGbYRTEABr3CrhrdG2ykO1ccsolEcZDUTQewCwOP8aZE49Zr_qH_nxtd4owc4l51F0ZphtTcH-5U985g",
-        transactions:PaypalPaymentMapper.fromOrder(order).transactions,
+        transactions:PaypalPaymentMapper.fromOrder(orderEntity).transactions,
         note: "Contact us for any questions on your order.",
         onSuccess: (Map params) async {
-          context.read<OrderCubit>().addOrder(order);
+          print("onSuccess: $params");
+          orderCubit.addOrder(orderEntity);
           ShowSnackBar(context, "order success");
           Navigator.pop(context);
         },
