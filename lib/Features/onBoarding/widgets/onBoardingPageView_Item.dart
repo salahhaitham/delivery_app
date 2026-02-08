@@ -13,8 +13,10 @@ final String subtitle1,subtitle2,subtitle3;
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SvgPicture.asset(image,),
-        SizedBox(height: 35,),
+        FittedBox(
+            fit: BoxFit.scaleDown,
+            child: SvgPicture.asset(image,)),
+
         Column(
           children: [
             Text(title1,style: AppTextStyles.heading23Bold.copyWith(color: Colors.black),),

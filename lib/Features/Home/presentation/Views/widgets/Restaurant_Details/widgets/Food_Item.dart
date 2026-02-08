@@ -34,7 +34,6 @@ class FoodItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // 🖼 IMAGE
           ClipRRect(
             borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
             child: AspectRatio(
@@ -60,16 +59,18 @@ class FoodItem extends StatelessWidget {
                 const SizedBox(height: 4),
 
                 // DESCRIPTION
-                Text(
-                  menuItemModel.description,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: AppTextStyles.body13Regular.copyWith(
-                    color: Colors.grey.shade600,
+                SizedBox(
+                  height: 36,
+                  child: Text(
+                    menuItemModel.description,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: AppTextStyles.body13Regular.copyWith(
+                      color: Colors.grey.shade600,
+                    ),
                   ),
                 ),
-
-                const SizedBox(height: 8),
+                 SizedBox(height: 8),
 
                 Row(
                   children: [
@@ -104,6 +105,7 @@ class FoodItem extends StatelessWidget {
                         ),
                       ),
                     ),
+
                   ],
                 ),
               ],

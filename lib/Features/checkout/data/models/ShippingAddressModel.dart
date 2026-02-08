@@ -1,5 +1,5 @@
 
-import 'package:delivery_app/Features/checkout/domain/ShippingAdderessEntity.dart';
+import 'package:delivery_app/Features/checkout/domain/entities/ShippingAdderessEntity.dart';
 import 'package:delivery_app/core/Services/getUser.dart';
 
 class ShippingAddressOrderModel {

@@ -24,10 +24,17 @@ class CartEntity {
 
     return (10 + totalCharge).round().toDouble();
   }
+  getShippingDiscount(){
+    return 0;
+  }
 
   double calculateTotal() {
     double totalprice = 0;
     totalprice = calculateSubTotal() + calculateDeliveryCharge();
     return totalprice;
+  }
+  getTotalPriceAfterShippingAndShippingdiscount(){
+    return calculateTotal()+calculateDeliveryCharge()-getShippingDiscount();
+
   }
 }

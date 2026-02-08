@@ -1,5 +1,5 @@
 
-import '../../Home/Domain/model/UserLocation1.dart';
+import '../../../Home/Domain/model/UserLocation1.dart';
 
 class ShippingAddressOrderEntity{
   final String? userName;

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/AppTextStyles.dart';
 import '../../../../../core/utils/App_Colors.dart';
-import '../../../domain/OrderEntity.dart';
+import '../../../domain/entities/OrderEntity.dart';
 
 class deliveryChargeRow extends StatelessWidget {
   const deliveryChargeRow({

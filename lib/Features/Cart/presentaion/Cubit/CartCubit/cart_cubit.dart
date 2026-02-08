@@ -90,6 +90,7 @@ class CartCubit extends Cubit<CartState> {
   }
 
   void decreaseItem(CartItemEntity item) {
+    if(item.count>1){
     final updatedItems = state.cart.cartItems.map((cartItem) {
       if (cartItem.menuItemModel.id == item.menuItemModel.id) {
         return cartItem.copyWith(count: cartItem.count - 1);
@@ -98,5 +99,6 @@ class CartCubit extends Cubit<CartState> {
     }).toList();
 
     emit(CartItemUpdated(CartEntity(updatedItems, state.cart.restaurantmodel)));
+  }
   }
 }

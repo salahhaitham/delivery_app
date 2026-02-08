@@ -1,4 +1,5 @@
 import 'package:delivery_app/Features/checkout/data/models/OrderModel.dart';
+import 'package:delivery_app/Features/checkout/domain/entities/PaybalPaymentEntity.dart';
 import 'package:delivery_app/Features/checkout/presentation/Cubit/checkout/checkout_Cubit.dart';
 import 'package:delivery_app/Features/checkout/presentation/Cubit/order/order_cubit.dart';
 import 'package:delivery_app/Features/checkout/presentation/views/widgets/addressSection.dart';
@@ -7,6 +8,7 @@ import 'package:delivery_app/core/widgets/Custom_Button.dart';
 import 'package:delivery_app/core/widgets/ShowSnackBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
 
 import 'checkoutStepsPageView.dart';
 
@@ -80,14 +82,9 @@ class _checkoutviewbodyState extends State<checkoutviewbody> {
               } else if (currentIndex == 1) {
                 validateAddressSection(context);
               } else {
-                final orderEntity = context
-                    .read<checkoutCubit>()
-                    .state
-                    .orderEntity;
+                payWithPaypal(context);
 
-                context.read<OrderCubit>().addOrder(
-                orderEntity
-                );
+
               }
             },
           ),
@@ -95,6 +92,32 @@ class _checkoutviewbodyState extends State<checkoutviewbody> {
         ],
       ),
     );
+  }
+
+  void payWithPaypal(BuildContext context) {
+     final order=context.read<checkoutCubit>().state.orderEntity;
+
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (BuildContext context) => PaypalCheckoutView(
+        sandboxMode: true,
+        clientId: "AZihRXBXaNlVjYkrEunJvR29qehMk71WFALYOR1ly7dUgGsAXFn-X5w5Csqrq5eQ8YZge_l7_ReH2uGh",
+        secretKey: "EGbYRTEABr3CrhrdG2ykO1ccsolEcZDUTQewCwOP8aZE49Zr_qH_nxtd4owc4l51F0ZphtTcH-5U985g",
+        transactions:PaypalPaymentMapper.fromOrder(order).transactions,
+        note: "Contact us for any questions on your order.",
+        onSuccess: (Map params) async {
+          context.read<OrderCubit>().addOrder(order);
+          ShowSnackBar(context, "order success");
+          Navigator.pop(context);
+        },
+        onError: (error) {
+          print("onError: $error");
+          Navigator.pop(context);
+        },
+        onCancel: () {
+          print('cancelled:');
+        },
+      ),
+    ));
   }
 
   void checkPaymentMethod(BuildContext context) {

@@ -1,4 +1,4 @@
-import 'package:delivery_app/Features/checkout/domain/OrderEntity.dart';
+import 'package:delivery_app/Features/checkout/domain/entities/OrderEntity.dart';
 import 'package:delivery_app/Features/checkout/presentation/Cubit/checkout/checkout_Cubit.dart';
 import 'package:delivery_app/Features/checkout/presentation/views/widgets/shipItem.dart';
 import 'package:flutter/material.dart';

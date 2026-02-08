@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:delivery_app/Features/checkout/data/models/OrderModel.dart';
-import 'package:delivery_app/Features/checkout/domain/OrderEntity.dart';
+import 'package:delivery_app/Features/checkout/domain/entities/OrderEntity.dart';
 import 'package:delivery_app/Features/checkout/domain/repo/orderRepo.dart';
 import 'package:delivery_app/core/Services/Backend_EndPoints.dart';
 import 'package:delivery_app/core/Services/DatabaseServices.dart';

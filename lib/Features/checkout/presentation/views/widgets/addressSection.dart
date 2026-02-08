@@ -4,7 +4,7 @@ import 'package:delivery_app/core/Helper_Functions/Location_Storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../domain/ShippingAdderessEntity.dart';
+import '../../../domain/entities/ShippingAdderessEntity.dart';
 import 'CustomAddress_TextField.dart';
 import 'address_Container.dart';
 

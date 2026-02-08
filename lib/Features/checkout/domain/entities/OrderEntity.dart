@@ -1,6 +1,6 @@
 import 'package:delivery_app/Features/Cart/domain/entities/cartEntity.dart';
 
-import '../../Home/Domain/model/UserLocation1.dart';
+import '../../../Home/Domain/model/UserLocation1.dart';
 import 'ShippingAdderessEntity.dart';
 
 

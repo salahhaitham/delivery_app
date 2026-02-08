@@ -3,7 +3,7 @@ import 'package:delivery_app/core/Services/getUser.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../../core/enums/OrderStatus.dart';
-import '../../domain/OrderEntity.dart';
+import '../../domain/entities/OrderEntity.dart';
 import 'ShippingAddressModel.dart';
 
 class OrderModel {
